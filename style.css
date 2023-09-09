@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-image: url(images/beach.jpeg);
+    background-position: center;
+    /* background-position-y: 20%; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+label {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+	color: white;
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+}
+
+.container {
+    place-items: center;
+}
+
+.header-text {
+    font-size: 75px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+}
+
+.sub-header-text {
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+}
+
+.center {
+    position: fixed;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#center-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.btn {
+    width: 45%;
+}
+
+#hat {
+    position: absolute;
+    left: 48.5%;
+    margin-top: -10.5%;
+    transform: translate(-50%, -50%);
+    max-width: 40%;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+}
