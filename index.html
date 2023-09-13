@@ -16,6 +16,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
     <script src="js/script.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
 </head>
 <body>
     <div class="container">
@@ -56,7 +58,7 @@
                     <input type="checkbox" class="form-check-input me-2" id="remember-me-login" value="">
                     <label class="form-check-label" for="remember-me-login">Remember Me</label>
                 </div>
-                <button type="submit" class="btn btn-primary" id="login-submit-button">Log In</button>
+                <button type="button" class="btn btn-primary" id="login-submit-button" onclick="doLogin();">Log In</button>
                 <button type="reset" class="btn btn-secondary" onclick=returnHome()>Return</button>
             </form>
         </div>

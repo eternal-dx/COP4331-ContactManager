@@ -1,4 +1,4 @@
-const urlBase = '104.131.179.180/LAMPAPI';
+const urlBase = 'http://104.131.179.180/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -7,18 +7,19 @@ let lastName = "";
 
 function doLogin()
 {
+	console.log("doing log in function");
 	userId = 0;
 	firstName = "";
 	lastName = "";
 	
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
-//	var hash = md5( password );
+	var hash = md5( password );
 	
-	document.getElementById("loginResult").innerHTML = "";
+//	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = {login:login,password:password};
-//	var tmp = {login:login,password:hash};
+//	let tmp = {login:login,password:password};
+	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -37,7 +38,7 @@ function doLogin()
 		
 				if( userId < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = "User/Password incorrect";
 					return;
 				}
 		
@@ -53,6 +54,7 @@ function doLogin()
 	}
 	catch(err)
 	{
+		console.log("Something went wrong");
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
@@ -108,9 +110,79 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-function addColor()
+function doSignUp()
 {
-	let newColor = document.getElementById("colorText").value;
+	let firstname = document.getElementById("first-name").value;
+    let lastname = document.getElementById("last-name").value;
+	let username = document.getElementById("signup-name").value;
+	let password = document.getElementById("signup-password").value;
+
+	var hashPass = md5(password);
+
+	const userInfo = 
+	{
+		firstName: firstname,
+		lastName: lastname,
+		login: username,
+		password: hashPass
+	};
+
+	let jsonPayload = JSON.stringify(userInfo);
+	
+	let url = urlBase + '/AddLogin.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+            if (this.status == 409) {
+                document.getElementById("signupResult").innerHTML = "User already exists";
+                return;
+            }
+
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				let jsonObject = JSON.parse( xhr.responseText );
+				userId = jsonObject.id;
+				firstName = jsonObject.firstName;
+				lastName = jsonObject.lastName;
+
+				document.getElementById("signupResult").innerHTML = "User created";
+
+				saveCookie();
+	
+				window.location.href = "color.html";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("loginResult").innerHTML = err.message;
+	}
+
+}
+
+function validateSignUp(firstN, lastN, phoneN, email)
+{
+	if (firstN == '' || lastN == '' || phoneN == '' || email == '')
+	{
+		console.log("ALL ENTRIES MUST BE FILLED ONE IS MISSING");
+		return false;
+	}
+
+	return true;
+}
+function addContact()
+{
+	let firstname = document.getElementById("contactTextFirst").value;
+    let lastname = document.getElementById("contactTextLast").value;
+    let phonenumber = document.getElementById("contactTextNumber").value;
+    let emailaddress = document.getElementById("contactTextEmail").value;
+
 	document.getElementById("colorAddResult").innerHTML = "";
 
 	let tmp = {color:newColor,userId,userId};
@@ -139,7 +211,7 @@ function addColor()
 	
 }
 
-function searchColor()
+function searchContact()
 {
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
