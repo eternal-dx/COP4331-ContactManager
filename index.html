@@ -69,7 +69,6 @@
                 <h3 class="sub-header-text">~ Sign Up ~</h3>
             </div>
             <br>
-            <!-- TODO: Change fields for user and password to align with JS -->
             <form>
                 <div class="form-group row mb-4">
                     <div class="col-md-6">
@@ -104,7 +103,7 @@
                     <label class="form-check-label" for="signupRememberMe">Remember Me</label>
                 </div>
                 <span id="signupResult"></span>
-                <button type="button" class="btn btn-primary" id="signup-submit-button">Sign Up</button>
+                <button type="button" class="btn btn-primary" id="signup-submit-button" onclick=doSignUp()>Sign Up</button>
                 <button type="reset" class="btn btn-secondary" onclick=returnHome()>Return</button>
             </form>
         </div>
