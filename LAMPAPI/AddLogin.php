@@ -39,9 +39,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-    function returnWithInfo( $newID, $firstname, $lastname, $login, $password )
+  function returnWithInfo( $newID, $firstname, $lastname, $login, $password )
 	{
-		$retValue = '{"ID":"' . $newID . '","firstName":"' . $firstname . '","lastName":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
+		$retValue = '{"ID":' . $newID . ',"firstName":"' . $firstname . '","lastName":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

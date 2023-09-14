@@ -16,10 +16,6 @@
 
 	
 	$inData = getRequestInfo();
-	
-	$id = 0;
-	$firstName = "";
-	$lastName = "";
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331"); 	
 	if( $conn->connect_error )
