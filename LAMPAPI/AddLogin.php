@@ -1,8 +1,8 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$firstname = $inData["firstname"];
-	$lastname = $inData["lastname"];
+	$firstname = $inData["firstName"];
+	$lastname = $inData["lastName"];
 	$login = $inData["login"];
 	$password = $inData["password"];
 
@@ -38,7 +38,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $firstname, $lastname, $login, $password )
+        function returnWithInfo( $firstname, $lastname, $login, $password )
 	{
 		$retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
