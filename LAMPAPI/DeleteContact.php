@@ -2,6 +2,7 @@
 
 	$inData = getRequestInfo();
 
+    $name = $inData["Name"];
     $id = $inData["ID"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
@@ -11,7 +12,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("DELETE from Contacts where ID=?");
+		$stmt = $conn->prepare("DELETE from Contacts where Name=? and ID=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 		$stmt->close();
