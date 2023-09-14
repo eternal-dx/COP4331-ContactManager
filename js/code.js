@@ -146,7 +146,9 @@ function doSignUp()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				console.log(jsonObject);
+				console.log(jsonObject.ID);
 				userId = jsonObject.ID;
+				console.log(userId);
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
