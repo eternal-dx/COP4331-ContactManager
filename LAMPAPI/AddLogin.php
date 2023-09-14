@@ -16,9 +16,10 @@
 		$stmt = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
 		$stmt->bind_param("ssss",$firstname,$lastname,$login,$password);
 		$stmt->execute();
+		$newID = $conn->insert_id;
 		$stmt->close();
 		$conn->close();
-		returnWithInfo($firstname, $lastname, $login, $password);
+		returnWithInfo($newID, $firstname, $lastname, $login, $password);
 	}
 
 	function getRequestInfo()
@@ -38,9 +39,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-        function returnWithInfo( $firstname, $lastname, $login, $password )
+    function returnWithInfo( $newID, $firstname, $lastname, $login, $password )
 	{
-		$retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
+		$retValue = '{"ID":"' . $newID . '","firstName":"' . $firstname . '","lastName":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
