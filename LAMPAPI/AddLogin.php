@@ -1,8 +1,8 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$firstname = $inData["firstname"];
-	$lastname = $inData["lastname"];
+	$firstname = $inData["firstName"];
+	$lastname = $inData["lastName"];
 	$login = $inData["login"];
 	$password = $inData["password"];
 
@@ -17,12 +17,8 @@
 		$stmt->bind_param("ssss",$firstname,$lastname,$login,$password);
 		$stmt->execute();
 		$stmt->close();
-
-		$stmt = $conn->prepare("SELECT ID from Users where Login=$login and Password=$password ORDER BY ID DESC LIMIT 1");
-		$newID = $stmt->execute();
-
 		$conn->close();
-		returnWithInfo($newID, $firstname, $lastname, $login, $password);
+		returnWithInfo($firstname, $lastname, $login, $password);
 	}
 
 	function getRequestInfo()
@@ -42,10 +38,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $newID, $firstname, $lastname, $login, $password )
+        function returnWithInfo( $firstname, $lastname, $login, $password )
 	{
-		$retValue = '{"newID":"' . $newID . '","firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
-		# $retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
+		$retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
