@@ -1,3 +1,8 @@
+:root {
+    --light-outline: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    --dark-outline: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -23,25 +28,37 @@ label {
     font-weight: bold;
     letter-spacing: 0.5px;
 	color: white;
-    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    text-shadow: var(--light-outline);
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px 15px;
+}
+
+.header-text {
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+    text-shadow: var(--dark-outline);
 }
 
 .container {
     place-items: center;
 }
 
-.header-text {
+.main-text {
     font-size: 75px;
     font-weight: bold;
     color: white;
-    text-shadow: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+    text-shadow: var(--dark-outline);
 }
 
-.sub-header-text {
+.sub-main-text {
 	font-size: 30px;
 	font-weight: bold;
 	color: white;
-    text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    text-shadow: var(--light-outline);
 }
 
 .center {
