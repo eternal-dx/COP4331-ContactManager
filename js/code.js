@@ -7,7 +7,6 @@ let lastName = "";
 
 function doLogin()
 {
-	console.log("doing log in function");
 	userId = 0;
 	firstName = "";
 	lastName = "";
@@ -19,7 +18,7 @@ function doLogin()
 //	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:hash};
-//	var tmp = {login:login,password:password};	
+//	var tmp = {login:login,password:password};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -47,14 +46,13 @@ function doLogin()
 
 				saveCookie();
 	
-				window.location.href = "color.html";
+				window.location.href = "contact.html";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		console.log("Something went wrong");
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
 
@@ -62,6 +60,7 @@ function doLogin()
 
 function saveCookie()
 {
+	console.log(fisrtName + " " + lastName + " " + userId);
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
@@ -154,7 +153,7 @@ function doSignUp()
 
 				saveCookie();
 	
-				window.location.href = "color.html";
+				window.location.href = "contact.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -176,6 +175,7 @@ function validateSignUp(firstN, lastN, phoneN, email)
 
 	return true;
 }
+
 function addContact()
 {
 	let firstname = document.getElementById("contactTextFirst").value;
