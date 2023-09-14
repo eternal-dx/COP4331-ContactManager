@@ -145,6 +145,8 @@ function doSignUp()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
+				console.log(jsonObject);
+
 				userId = jsonObject.id;
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
