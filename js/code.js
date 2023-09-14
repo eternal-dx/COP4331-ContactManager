@@ -15,10 +15,9 @@ function doLogin()
 	let password = document.getElementById("loginPassword").value;
 	var hash = md5( password );
 	
-//	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:hash};
-//	var tmp = {login:login,password:password};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -145,10 +144,7 @@ function doSignUp()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				console.log(jsonObject);
-				console.log(jsonObject.ID);
 				userId = jsonObject.ID;
-				console.log(userId);
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
