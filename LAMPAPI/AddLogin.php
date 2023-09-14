@@ -17,8 +17,12 @@
 		$stmt->bind_param("ssss",$firstname,$lastname,$login,$password);
 		$stmt->execute();
 		$stmt->close();
+
+		$stmt = $conn->prepare("SELECT ID from Users where Login=$login and Password=$password ORDER BY ID DESC LIMIT 1");
+		$newID = $stmt->execute();
+
 		$conn->close();
-		returnWithInfo($firstname, $lastname, $login, $password);
+		returnWithInfo($newID, $firstname, $lastname, $login, $password);
 	}
 
 	function getRequestInfo()
@@ -38,9 +42,10 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $firstname, $lastname, $login, $password )
+  function returnWithInfo( $newID, $firstname, $lastname, $login, $password )
 	{
-		$retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
+		$retValue = '{"newID":"' . $newID . '","firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
+		# $retValue = '{"firstname":"' . $firstname . '","lastname":"' . $lastname . '","login":"' . $login . '","password":"' . $password . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
