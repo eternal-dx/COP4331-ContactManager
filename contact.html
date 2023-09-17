@@ -15,8 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
     <script src="js/code.js"></script>
-	<!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() 
@@ -24,23 +22,23 @@
 		readCookie();
 	}, false);
 	</script>
-
 </head>
 <body>
 	<header>
-		<div>
-			<h1 class="header-text">Contact Captain</h1>
+		<div class="header-left">
+			<h1 class="header-text left">Contact Captain</h1>
+		</div>
+		<div class="header-center">
+			<h1 class="sub-header-text" id="welcomeText">Welcome</h1>
+		</div>
+		<div class="header-right">
+			<button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
 		</div>
 	</header>
-	<div id="loggedInDiv">
-		<span id="userName"></span>
-		<br/>
-		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Log Out</button>
-	</div>
-	<div id="accessUIDiv">
+	<div class="container">
 		<br>
 		<input type="text" id="searchText" placeholder="Contact Name">
-		<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();">Search Contact</button>
+		<button type="button" id="searchContactButton" onclick="searchContact();">Search Contact</button>
 		<br>
 		<span id="contactSearchResult"></span>
 		<p id="contactList"></p>
@@ -50,7 +48,7 @@
 		<input type="text" id="contactTextLast" placeholder="Contact Last">
 		<input type="text" id="contactTextNumber" placeholder="Contact Number">
 		<input type="text" id="contactTextEmail" placeholder="Contact Email">
-		<button type="button" id="addContactButton" class="buttons" onclick="addContact();">Add Contact</button>
+		<button type="button" id="addContactButton" onclick="addContact();">Add Contact</button>
 		<br>
 		<span id="contactAddResult"></span>
 	</div>
