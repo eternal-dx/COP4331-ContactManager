@@ -15,10 +15,9 @@ function doLogin()
 	let password = document.getElementById("loginPassword").value;
 	var hash = md5( password );
 	
-//	document.getElementById("loginResult").innerHTML = "";
+	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = {login:login,password:hash};
-//	var tmp = {login:login,password:password};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
@@ -60,7 +59,6 @@ function doLogin()
 
 function saveCookie()
 {
-	console.log(firstName + " " + lastName + " " + userId);
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
@@ -145,9 +143,7 @@ function doSignUp()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
-				console.log(jsonObject);
-
-				userId = jsonObject.id;
+				userId = jsonObject.ID;
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
