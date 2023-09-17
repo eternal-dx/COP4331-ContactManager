@@ -5,7 +5,7 @@
     $newName = $inData["newName"];
     $newPhone = $inData["newPhone"];
     $newEmail = $inData["newEmail"];
-    $id = $inData["userID"];
+    $userID = $inData["userID"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
 	if ($conn->connect_error) 
@@ -15,12 +15,12 @@
 	else
 	{
 		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? where UserID=?");
-        $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $id);
+        $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $userID);
         $stmt->execute();
 		$stmt->close();
 		$conn->close();
 
-        returnWithInfo($newName, $newPhone, $newEmail, $id);
+        returnWithInfo($newName, $newPhone, $newEmail, $userID);
 	}
 
 	function getRequestInfo()
@@ -40,9 +40,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $contact, $phone, $email, $id )
+	function returnWithInfo( $contact, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userId":"' . $id . '"}';
+		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userID":"' . $userID . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
     

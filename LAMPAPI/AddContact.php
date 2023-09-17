@@ -4,7 +4,7 @@
 	$contact = $inData["contact"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
-	$userId = $inData["userId"];
+	$userID = $inData["userID"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
 	if ($conn->connect_error) 
@@ -14,11 +14,11 @@
 	else
 	{
 		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss",$contact,$phone,$email,$userId);
+		$stmt->bind_param("ssss", $contact, $phone, $email, $userID);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithInfo($contact, $phone, $email, $userId);
+		returnWithInfo($contact, $phone, $email, $userID);
 	}
 
 	function getRequestInfo()
@@ -38,9 +38,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $contact, $phone, $email, $userId )
+  function returnWithInfo( $contact, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","phone":"' . $phone . '","email":"' . $email . '","userId":"' . $userId . '","error":""}';
+		$retValue = '{"contact":"' . $contact . '","phone":"' . $phone . '","email":"' . $email . '","userId":"' . $userID . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
