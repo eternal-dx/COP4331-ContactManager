@@ -14,13 +14,13 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET Name=? and Phone=? and Email=? where ID=?");
+		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? where ID=?");
         $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $id);
         $stmt->execute();
 		$stmt->close();
 		$conn->close();
 
-        returnWithError("");
+        returnWithInfo($newName, $newPhone, $newEmail, $id);
 	}
 
 	function getRequestInfo()
@@ -36,8 +36,14 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
-	}	
+	}
+
+	function returnWithInfo( $contact, $phone, $email, $userId )
+	{
+		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userId":"' . $userId . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
     
 ?>

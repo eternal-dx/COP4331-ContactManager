@@ -15,8 +15,8 @@
 		$stmt = $conn->prepare("DELETE from Contacts where Name=? and ID=?");
     $stmt->bind_param("si", $name, $id);
     $stmt->execute();
-		$stmt->close();
-		$conn->close();
+	$stmt->close();
+	$conn->close();
 
     returnWithInfo($name, $id);
 	}
@@ -38,7 +38,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $name, $id )
+  	function returnWithInfo( $name, $id )
 	{
 		$retValue = '{"Name":"' . $name . '","ID":' . $id . '}';
 		sendResultInfoAsJson( $retValue );
