@@ -42,7 +42,7 @@
 
 	function returnWithInfo( $contact, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userID":' . $userID . '}';
+		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userID":"' . $userID . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
     
