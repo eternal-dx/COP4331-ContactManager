@@ -14,14 +14,14 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
-    <script src="js/code.js"></script>
+    <!-- <script src="js/code.js"></script>
 	
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function()
 	{
 		readCookie();
 	}, false);
-	</script>
+	</script> -->
 </head>
 <body>
 	<header>
@@ -29,7 +29,7 @@
 			<h1 class="header-text">Contact Captain</h1>
 		</div>
 		<div id="header-center">
-			<h1 class="sub-header-text" id="welcomeText">Welcome</h1>
+			<h1 class="sub-header-text" id="welcomeText">Welcome, firstName lastName!</h1>
 		</div>
 		<div id="header-right">
 			<button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
@@ -56,12 +56,17 @@
 			<button type="button" id="addContactButton" onclick="addContact();">Add Contact</button>
 			<br>
 			<span id="contactAddResult"></span> -->
-			<button type="button" id="addContactButton"></button>
+			<div>
+				<button type="button" class="btn btn-primary" id="addContactButton">Add Contact</button>
+			</div>
 		</div>
 		<div id="contact-holder">
-			<br>
-			<p id="contactList"></p>
-			<br>
+			<h1 class="sub-header-text">Name:</h1>
+			<h1 class="sub-header-text">Email:</h1>
+			<h1 class="sub-header-text">Phone #:</h1>
+			<ul>
+				
+			</ul>
 		</div>
 	</div>
 </body>
