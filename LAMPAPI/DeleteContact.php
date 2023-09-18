@@ -17,7 +17,7 @@
 		$stmt->execute();
 		if ( $stmt->affected_rows == 0 )
 		{
-			returnWithError( "No entry with that name and userId found." );
+			returnWithError( "No Records Found" );
 		}
 		else
 		{
