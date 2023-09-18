@@ -39,13 +39,13 @@
 		<div id="contact-handler">
 			<form>
 				<div class="form-group row mb-4">
-					<input type="text" id="searchText" placeholder="Contact Name">
+					<input type="text" class="form-control" id="searchText" placeholder="Contact Name">
 				</div>
 				<div class="mb-4">
 					<p id="contactSearchResult"></p>
 				</div>
 				<div class="form-group row">
-					<button type="button" id="searchContactButton" onclick="searchContact();">Search Contact</button>
+					<button type="button" class="btn btn-success" id="searchContactButton" onclick="searchContact();">Search Contact</button>
 				</div>
 			</form>
 			<!-- <br>
@@ -56,9 +56,9 @@
 			<button type="button" id="addContactButton" onclick="addContact();">Add Contact</button>
 			<br>
 			<span id="contactAddResult"></span> -->
-			<button type="button" id="addContactButton">+</button>
+			<button type="button" id="addContactButton"></button>
 		</div>
-		<div>
+		<div id="contact-holder">
 			<br>
 			<p id="contactList"></p>
 			<br>
