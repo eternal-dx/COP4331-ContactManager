@@ -4,7 +4,7 @@
 	$contact = $inData["contact"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
-	$userID = $inData["userID"];
+	$userID = $inData["userId"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
 	if ($conn->connect_error) 
@@ -40,7 +40,7 @@
  
   function returnWithInfo( $contact, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","phone":"' . $phone . '","email":"' . $email . '","userID":' . $userID . ',"error":""}';
+		$retValue = '{"contact":"' . $contact . '","phone":"' . $phone . '","email":"' . $email . '","userId":' . $userID . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
