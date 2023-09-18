@@ -18,11 +18,11 @@
 		$deleted_rows = $stmt->affected_rows;
 		if ($deleted_rows == 0)
 		{
-			returnWithError("No entry with that name and userId found.");
+			returnWithError( "No entry with that name and userId found." );
 		}
 		else
 		{
-			returnWithInfo($name, $userID);
+			returnWithInfo( $name, $userID );
 		}
 
 		$stmt->close();
