@@ -17,8 +17,7 @@
 		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? where UserID=?");
         $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $userID);
         $stmt->execute();
-		$deleted_rows = $stmt->affected_rows;
-		if ( $deleted_rows == 0 )
+		if ( $stmt->affected_rows == 0 )
 		{
 			returnWithError( "No entry with that name and userId found." );
 		}
