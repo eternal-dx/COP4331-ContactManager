@@ -35,7 +35,7 @@
                 <h1 class="main-text">Contact Captain</h1>
             </div>
             <br>
-            <div id="center-buttons">
+            <div class="button-handler" id="center-buttons">
                 <button class="btn btn-primary" id="loginButton">Log In</button>
                 <button class="btn btn-secondary" id="signupButton">Sign Up</button>
             </div>
@@ -66,7 +66,7 @@
                 <div class="mb-4">
                     <span id="loginResult"></span>
                 </div>
-                <div class="center-buttons">
+                <div class="button-handler">
                     <button type="button" class="btn btn-primary" id="loginSubmitButton" onclick="doLogin();">Log In</button>
                     <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
                 </div>
@@ -102,8 +102,10 @@
                 <div class="mb-4">
                     <span id="signupResult"></span>
                 </div>
-                <button type="button" class="btn btn-primary" id="signupSubmitButton" onclick="doSignUp();">Sign Up</button>
-                <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                <div class="button-handler">
+                    <button type="button" class="btn btn-primary" id="signupSubmitButton" onclick="doSignUp();">Sign Up</button>
+                    <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                </div>
             </form>
         </div>
     </div>

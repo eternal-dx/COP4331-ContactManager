@@ -34,18 +34,7 @@ function returnHome() {
     });
 }
 
-function showContactForm() {
-    if (!enterScreen()) return;
-    let content = $(".container");
-    content.find("#contact-handler").fadeOut(400);
-    content.find("#contact-holder").fadeOut(400);
-    content.find("#add-contact-form").delay(500).fadeIn(200, function() {
-        screenActive = false;
-    });
-}
-
 $(document).ready(function() {
     $("#loginButton").on("click", logIn);
     $("#signupButton").on("click", signUp);
-    $("#addContactButton").on("click", showContactForm);
 });

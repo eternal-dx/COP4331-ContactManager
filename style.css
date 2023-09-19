@@ -48,7 +48,7 @@ p {
     letter-spacing: 1.2px;
 }
 
-/* Header Styles for contact.html */
+/* Styles for Header */
 
 header {
     background-color: var(--dark-shadow);
@@ -79,7 +79,12 @@ header {
     justify-content: flex-end;
 }
 
-/* General Styles for index.html */
+.button-handler {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Styles for index.html */
 
 .main-text {
     font-size: 75px;
@@ -114,8 +119,6 @@ header {
 }
 
 #center-buttons {
-    display: block;
-    justify-content: space-evenly;
     background-color: var(--light-shadow);
     border-radius: 20px;
     padding: 20px;
@@ -125,7 +128,18 @@ header {
     width: 45%;
 }
 
-/* General Styles for contact.html */
+#hat {
+    position: absolute;
+    left: 48.5%;
+    margin-top: -10.5%;
+    transform: translate(-50%, -50%);
+    max-width: 40%;
+    height: auto;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Styles for contact.html */
 
 #add-contact-div {
     display: flex;
@@ -141,11 +155,19 @@ header {
 }
 
 #addContactButton {
+    background-color: #198754;
+    border: none;
     background-image: url(images/add_contact.png);
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
     width: 40px;
+    height: 40px;
+}
+
+#addContactButton:hover {
+   transition: 0.1s ease-in;
+   background-color: #146c43;
 }
 
 #contact-handler {
@@ -164,20 +186,20 @@ header {
     background-color: var(--darker-shadow);
     border-radius: 10px;
     padding: 10px;
-    margin: 30px 10% 0;
+    margin-top: 30px;
 }
 
-/* Specific ID's */
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-image: url(images/beach.jpeg);
+    background-repeat: no-repeat;
+}
 
-#hat {
-    position: absolute;
-    left: 48.5%;
-    margin-top: -10.5%;
-    transform: translate(-50%, -50%);
-    max-width: 40%;
-    height: auto;
-    object-fit: cover;
-    z-index: 1;
+.modal-content form {
+    width: 80%;
 }
 
 #logoutButton {
