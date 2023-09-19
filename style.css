@@ -2,10 +2,13 @@
     --white-text-outline: 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
     --dark-text-outline: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
     --darker-text-outline: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+
     --light-shadow: rgba(0, 0, 0, 0.25);
     --dark-shadow: rgba(0, 0, 0, 0.4);
-    --light-button-outline: 3px black solid;
-    --heavy-button-outline: 4px black solid;
+    --darker-shadow: rgba(0, 0, 0, 0.6);
+    
+    --light-button-outline: 3px white solid;
+    --heavy-button-outline: 4px white solid;
 }
 
 * {
@@ -61,8 +64,8 @@ header {
     text-shadow: var(--darker-text-outline);
 }
 
-.header-center {
-    max-width: 75%;
+#header-center {
+    max-width: 40%;
     text-align: center;
 }
 
@@ -111,7 +114,7 @@ header {
 }
 
 #center-buttons {
-    display: flex;
+    display: block;
     justify-content: space-evenly;
     background-color: var(--light-shadow);
     border-radius: 20px;
@@ -124,31 +127,44 @@ header {
 
 /* General Styles for contact.html */
 
+#add-contact-div {
+    display: flex;
+    margin-left: 1%;
+}
+
+#searchContactButton {
+    background-image: url(images/search_contact.png);
+    background-position: center;
+    background-size: 55%;
+    background-repeat: no-repeat;
+    width: 10%;
+}
+
+#addContactButton {
+    background-image: url(images/add_contact.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 40px;
+}
+
 #contact-handler {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     background-color: var(--dark-shadow);
     border-radius: 10px;
     padding: 10px;
-    margin: 50px 32% 0;
+    margin: 30px 30% 0;
 }
 
 #contact-holder {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: var(--dark-shadow);
+    justify-content: space-between;
+    background-color: var(--darker-shadow);
     border-radius: 10px;
     padding: 10px;
-    margin: 10px 10% 0;
-}
-
-#addContactButton {
-    width: 120px;
-    height: 120px;
-    border-radius: 120px;
-    border: 4px black solid;
+    margin: 30px 10% 0;
 }
 
 /* Specific ID's */
@@ -166,5 +182,5 @@ header {
 
 #logoutButton {
     width: 20%;
-    border: 3px black solid;
+    border: var(--light-button-outline);
 }

@@ -14,6 +14,7 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
+	<script src="js/script.js"></script>
     <!-- <script src="js/code.js"></script>
 	
 	<script type="text/javascript">
@@ -29,7 +30,7 @@
 			<h1 class="header-text">Contact Captain</h1>
 		</div>
 		<div id="header-center">
-			<h1 class="sub-header-text" id="welcomeText">Welcome, firstName lastName!</h1>
+			<h1 class="sub-header-text" id="welcomeText">Welcome, firstName lastName.</h1>
 		</div>
 		<div id="header-right">
 			<button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
@@ -37,27 +38,12 @@
 	</header>
 	<div class="container">
 		<div id="contact-handler">
-			<form>
-				<div class="form-group row mb-4">
-					<input type="text" class="form-control" id="searchText" placeholder="Contact Name">
-				</div>
-				<div class="mb-4">
-					<p id="contactSearchResult"></p>
-				</div>
-				<div class="form-group row">
-					<button type="button" class="btn btn-success" id="searchContactButton" onclick="searchContact();">Search Contact</button>
-				</div>
-			</form>
-			<!-- <br>
-			<input type="text" id="contactTextFirst" placeholder="Contact First">
-			<input type="text" id="contactTextLast" placeholder="Contact Last">
-			<input type="text" id="contactTextNumber" placeholder="Contact Number">
-			<input type="text" id="contactTextEmail" placeholder="Contact Email">
-			<button type="button" id="addContactButton" onclick="addContact();">Add Contact</button>
-			<br>
-			<span id="contactAddResult"></span> -->
-			<div>
-				<button type="button" class="btn btn-primary" id="addContactButton">Add Contact</button>
+			<div class="input-group">
+				<input type="text" class="form-control" id="searchText" placeholder="Search for a contact...">
+				<button type="button" class="btn btn-primary" id="searchContactButton" onclick="searchContact();"></button>
+			</div>
+			<div id="add-contact-div">
+				<button type="button" class="btn btn-block btn-success form-control" id="addContactButton"></button>
 			</div>
 		</div>
 		<div id="contact-holder">
@@ -67,6 +53,10 @@
 			<ul>
 				
 			</ul>
+		</div>
+		<div class="center" id="add-contact-form" style="display: none">
+			<h1 class="main-header-text">Add Contact</h1>
+			<span>TESTING</span>
 		</div>
 	</div>
 </body>
