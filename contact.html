@@ -14,45 +14,79 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
+	<script src="js/script.js"></script>
     <script src="js/code.js"></script>
-	<!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	
 	<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function() 
-	{
-		readCookie();
-	}, false);
+		document.addEventListener('DOMContentLoaded', function()
+		{
+			readCookie();
+		}, false);
 	</script>
-
 </head>
 <body>
+	<!-- Header -->
 	<header>
-		<div>
+		<div id="header-left">
 			<h1 class="header-text">Contact Captain</h1>
 		</div>
+		<div id="header-center">
+			<h1 class="sub-header-text" id="welcomeText">Welcome, firstName lastName.</h1>
+		</div>
+		<div id="header-right">
+			<button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
+		</div>
 	</header>
-	<div id="loggedInDiv">
-		<span id="userName"></span>
-		<br/>
-		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Log Out</button>
+	<!-- Main div to manage contacts-->
+	<div class="container">
+		<div id="contact-handler">
+			<div class="input-group">
+				<input type="text" class="form-control" id="searchText" placeholder="Search for a contact...">
+				<button type="button" class="btn btn-primary" id="searchContactButton" onclick="searchContact();"></button>
+			</div>
+			<div id="add-contact-div">
+				<button type="button" class="form-control" id="addContactButton" data-bs-toggle="modal" data-bs-target=".add-contact-modal"></button>
+			</div>
+		</div>
+		<div id="contact-holder">
+			<h1 class="sub-header-text">First Name:</h1>
+			<h1 class="sub-header-text">Last Name:</h1>
+			<h1 class="sub-header-text">Email:</h1>
+			<h1 class="sub-header-text">Phone #:</h1>
+			<ul>
+				
+			</ul>
+		</div>
 	</div>
-	<div id="accessUIDiv">
-		<br>
-		<input type="text" id="searchText" placeholder="Contact Name">
-		<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();">Search Contact</button>
-		<br>
-		<span id="contactSearchResult"></span>
-		<p id="contactList"></p>
-		<br>
-		<br>
-		<input type="text" id="contactTextFirst" placeholder="Contact First">
-		<input type="text" id="contactTextLast" placeholder="Contact Last">
-		<input type="text" id="contactTextNumber" placeholder="Contact Number">
-		<input type="text" id="contactTextEmail" placeholder="Contact Email">
-		<button type="button" id="addContactButton" class="buttons" onclick="addContact();">Add Contact</button>
-		<br>
-		<span id="contactAddResult"></span>
+	<!-- Add contact modal -->
+	<div class="modal fade add-contact-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<h1 class="sub-main-text">Add Contact</h1>
+				<!-- TODO: Fill appropriate ids-->
+				<form>
+					<div class="form-group row mb-4">
+						<input type="text" class="form-control" id="contactTextFirst" placeholder="First Name">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" class="form-control" id="contactTextLast" placeholder="Last Name">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" class="form-control" id="contactTextNumber" placeholder="Phone #">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" class="form-control" id="contactTextEmail" placeholder="Email">
+					</div>
+					<div class="mb-4">
+						<span id="contactAddResult"></span>
+					</div>
+					<div class="button-handler">
+						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

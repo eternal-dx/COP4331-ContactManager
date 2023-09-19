@@ -1,6 +1,14 @@
 :root {
-    --light-outline: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
-    --dark-outline: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+    --white-text-outline: 0 0 3px white, 0 0 3px white, 0 0 3px white, 0 0 3px white;
+    --dark-text-outline: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black;
+    --darker-text-outline: 0 0 6px black, 0 0 6px black, 0 0 6px black, 0 0 6px black;
+
+    --light-shadow: rgba(0, 0, 0, 0.25);
+    --dark-shadow: rgba(0, 0, 0, 0.4);
+    --darker-shadow: rgba(0, 0, 0, 0.6);
+    
+    --light-button-outline: 3px white solid;
+    --heavy-button-outline: 4px white solid;
 }
 
 * {
@@ -19,7 +27,7 @@ body {
 }
 
 form {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: var(--light-shadow);
     border-radius: 20px;
     padding: 40px;
 }
@@ -28,37 +36,73 @@ label {
     font-weight: bold;
     letter-spacing: 0.5px;
 	color: white;
-    text-shadow: var(--light-outline);
+    text-shadow: var(--dark-text-outline);
 }
 
+p {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #FF160C;
+    text-shadow: var(--dark-text-outline);
+    letter-spacing: 1.2px;
+}
+
+/* Styles for Header */
+
 header {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--dark-shadow);
     padding: 5px 15px;
+    display: flex;
+    align-items: center;
 }
 
 .header-text {
     font-size: 45px;
     font-weight: bold;
     color: white;
-    text-shadow: var(--dark-outline);
+    text-shadow: var(--darker-text-outline);
+}
+
+#header-center {
+    max-width: 40%;
+    text-align: center;
+}
+
+#header-left,
+#header-right {
+    flex: 1;
+    display: flex;
+}
+
+#header-right {
+    justify-content: flex-end;
+}
+
+.button-handler {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Styles for index.html */
+
+.main-text {
+    font-size: 75px;
+    font-weight: bold;
+    color: white;
+    text-shadow: var(--darker-text-outline);
 }
 
 .container {
     place-items: center;
 }
 
-.main-text {
-    font-size: 75px;
-    font-weight: bold;
-    color: white;
-    text-shadow: var(--dark-outline);
-}
-
-.sub-main-text {
+.sub-main-text,
+.sub-header-text {
 	font-size: 30px;
 	font-weight: bold;
 	color: white;
-    text-shadow: var(--light-outline);
+    text-shadow: var(--dark-text-outline);
 }
 
 .center {
@@ -67,7 +111,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--dark-shadow);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -75,9 +119,7 @@ header {
 }
 
 #center-buttons {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: var(--light-shadow);
     border-radius: 20px;
     padding: 20px;
 }
@@ -95,4 +137,72 @@ header {
     height: auto;
     object-fit: cover;
     z-index: 1;
+}
+
+/* Styles for contact.html */
+
+#add-contact-div {
+    display: flex;
+    margin-left: 1%;
+}
+
+#searchContactButton {
+    background-image: url(images/search_contact.png);
+    background-position: center;
+    background-size: 55%;
+    background-repeat: no-repeat;
+    width: 10%;
+}
+
+#addContactButton {
+    background-color: #198754;
+    border: none;
+    background-image: url(images/add_contact.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+#addContactButton:hover {
+   transition: 0.1s ease-in;
+   background-color: #146c43;
+}
+
+#contact-handler {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--dark-shadow);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 30px 30% 0;
+}
+
+#contact-holder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--darker-shadow);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-image: url(images/beach.jpeg);
+    background-repeat: no-repeat;
+}
+
+.modal-content form {
+    width: 80%;
+}
+
+#logoutButton {
+    width: 20%;
+    border: var(--light-button-outline);
 }
