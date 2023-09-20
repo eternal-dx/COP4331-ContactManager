@@ -15,14 +15,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
 	<script src="js/script.js"></script>
-    <script src="js/code.js"></script>
-	
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function()
 		{
-			readCookie();
+			//readCookie();
+			loadAllContacts();
 		}, false);
 	</script>
+    <!-- <script src="js/code.js"></script>
+	
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function()
+	{
+		readCookie();
+	}, false);
+	</script> -->
+	
 </head>
 <body>
 	<!-- Header -->
@@ -53,9 +61,6 @@
 			<h1 class="sub-header-text">Last Name:</h1>
 			<h1 class="sub-header-text">Email:</h1>
 			<h1 class="sub-header-text">Phone #:</h1>
-			<ul>
-				
-			</ul>
 		</div>
 	</div>
 	<!-- Add contact modal -->
@@ -66,27 +71,50 @@
 				<!-- TODO: Fill appropriate ids-->
 				<form>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextFirst" placeholder="First Name">
+						<input type="text" class="form-control" id="" placeholder="First Name">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextLast" placeholder="Last Name">
+						<input type="text" class="form-control" id="" placeholder="Last Name">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextNumber" placeholder="Phone #">
+						<input type="text" class="form-control" id="" placeholder="Phone #">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextEmail" placeholder="Email">
-					</div>
-					<div class="mb-4">
-						<span id="contactAddResult"></span>
+						<input type="text" class="form-control" id="" placeholder="Email">
 					</div>
 					<div class="button-handler">
-						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-primary" onclick="addContact();">Add</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+
+	<!--Search Modal-->
+	<div class="modal fade add-contact-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<h1 class="sub-main-text">Add Contact</h1>
+				<!-- TODO: Fill appropriate ids-->
+				<div>
+					<div class="form-group row mb-4">
+						<input type="text" id="" placeholder="First Name">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" id="" placeholder="Last Name">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" id="" placeholder="Phone #">
+					</div>
+					<div class="form-group row mb-4">
+						<input type="text" id="" placeholder="Email">
+					</div>
+					<div class="button-handler">
+						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+					</div>
+				</div>
+			</div>
 </body>
 </html>
