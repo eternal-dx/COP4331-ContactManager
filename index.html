@@ -20,7 +20,7 @@
     <script src="js/md5.js"></script>
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() 
+        document.addEventListener('DOMContentLoaded', function()
         {
             readCookie();
         }, false);
@@ -45,23 +45,21 @@
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
                 <h1 class="main-text">Contact Captain</h1>
-                <h3 class="sub-main-text">~ Log In ~</h3>
+                <h3 class="sub-header-text">~ Log In ~</h3>
             </div>
             <br>
             <form>
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="text" class="form-control" id="loginName" placeholder="Username">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="loginName" placeholder="Username">
+                    <label for="loginName">Username</label>
                 </div>
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                    <label for="loginPassword">Password</label>
                 </div>
                 <div class="mb-4">
-                    <input type="checkbox" class="form-check-input me-2" id="loginRememberMe" value="">
-                    <label class="form-check-label" for="loginRememberMe">Remember Me</label>
+                    <input type="checkbox" class="form-check-input me-2" id="rememberMe" value="">
+                    <label class="form-check-label" for="rememberMe" id="rememberMeLabel">Remember Me</label>
                 </div>
                 <div class="mb-4">
                     <span id="loginResult"></span>
@@ -77,26 +75,25 @@
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
                 <h1 class="main-text">Contact Captain</h1>
-                <h3 class="sub-main-text">~ Sign Up ~</h3>
+                <h3 class="sub-header-text">~ Sign Up ~</h3>
             </div>
-            <br>
             <form>
                 <div class="form-group row mb-4">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="form-group row mb-4">
                     <div>
-                        <input type="text" class="form-control" id="signupName" placeholder="Username">
+                        <input type="text" class="form-control" id="signupName" placeholder="Username" required>
                     </div>
                 </div>
                 <div class="form-group row mb-4">
                     <div>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="mb-4">

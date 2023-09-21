@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,23 +16,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
 	<script src="js/script.js"></script>
-    <script src="js/code.js"></script>
-	
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function()
 		{
-			readCookie();
+			//readCookie();
+			//searchContacts();
 		}, false);
 	</script>
+
 </head>
 <body>
 	<!-- Header -->
 	<header>
 		<div id="header-left">
-			<h1 class="header-text">Contact Captain</h1>
+			<a href="index.html">
+				<img id="logo" src="images/captain_hat.png" alt="Captain's Hat"></img>
+				<!--h1 class="header-text">Contact Captain</h1-->
+			</a>
 		</div>
 		<div id="header-center">
-			<h1 class="sub-header-text" id="welcomeText">Welcome, firstName lastName.</h1>
+			<h1 class="sub-header-text mb-0" id="welcomeText">Welcome, Johnny Bravo!</h1>
 		</div>
 		<div id="header-right">
 			<button type="button" class="btn btn-primary" id="logoutButton">Log Out</button>
@@ -48,45 +52,45 @@
 				<button type="button" class="form-control" id="addContactButton" data-bs-toggle="modal" data-bs-target=".add-contact-modal"></button>
 			</div>
 		</div>
-		<div id="contact-holder">
-			<h1 class="sub-header-text">First Name:</h1>
-			<h1 class="sub-header-text">Last Name:</h1>
-			<h1 class="sub-header-text">Email:</h1>
-			<h1 class="sub-header-text">Phone #:</h1>
-			<ul>
-				
-			</ul>
-		</div>
+		<table id="table" class="styled-table" width="100%">
+            <thead>
+                <tr>
+                    <th class="tableLabels">First Name</th>
+                    <th class="tableLabels">Last Name</th>
+                    <th class="tableLabels">Email</th>
+                    <th class="tableLabels">Phone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
 	</div>
 	<!-- Add contact modal -->
 	<div class="modal fade add-contact-modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
-				<h1 class="sub-main-text">Add Contact</h1>
-				<!-- TODO: Fill appropriate ids-->
 				<form>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextFirst" placeholder="First Name">
+						<input type="text" class="form-control" id="contactFirst" placeholder="First Name">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextLast" placeholder="Last Name">
+						<input type="text" class="form-control" id="contactLast" placeholder="Last Name">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextNumber" placeholder="Phone #">
+						<input type="text" class="form-control" id="contactPhone" placeholder="Phone #">
 					</div>
 					<div class="form-group row mb-4">
-						<input type="text" class="form-control" id="contactTextEmail" placeholder="Email">
-					</div>
-					<div class="mb-4">
-						<span id="contactAddResult"></span>
+						<input type="text" class="form-control" id="contactEmail" placeholder="Email">
 					</div>
 					<div class="button-handler">
-						<button type="button" class="btn btn-primary">Add</button>
+						<button type="button" class="btn btn-primary" onclick="addContact();">Add</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
