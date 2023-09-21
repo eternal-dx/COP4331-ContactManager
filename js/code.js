@@ -220,7 +220,7 @@ function searchContact()
 
 	let tmp = {
 		search: srch,
-        userID: id_val
+        userID: userId
     };
 	let jsonPayload = JSON.stringify( tmp );
 
