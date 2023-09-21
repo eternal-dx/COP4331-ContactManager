@@ -141,6 +141,12 @@ header {
 
 /* Styles for contact.html */
 
+#logo {
+    width: 100px;
+    height: 100px;
+    left: 0;
+}
+
 #add-contact-div {
     display: flex;
     margin-left: 1%;
