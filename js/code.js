@@ -241,8 +241,6 @@ function searchContact()
 				tableBody.innerHTML = "";
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-					arr[i] = jsonObject.results[i].ID;
-
 					if( i < jsonObject.results.length)
 					{
 						const tr = document.createElement("tr");
