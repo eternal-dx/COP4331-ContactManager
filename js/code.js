@@ -185,7 +185,12 @@ function addContact()
 
 	document.getElementById("contactAddResult").innerHTML = "";
 
-	let tmp = { contact: firstname + lastname, phone: phonenumber, email: emailaddress, userId: userId };
+	let tmp = { 
+			contact: firstname + lastname, 
+			phone: phonenumber,
+			email: emailaddress,
+			userId: userId 
+	};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -309,7 +314,7 @@ function updateContact(id)
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
-                //loadContacts();
+                searchContacts();
             }
         };
         xhr.send(jsonPayload);
@@ -320,5 +325,37 @@ function updateContact(id)
 
 function deleteContact(id)
 {
-	
+	let firstName = document.getElementById("tableFirstName"+i).innerHTML;
+	let lastName = document.getElementById("tableLastName"+i).innerHTML;
+	let fullName = firstName + lastName;
+    let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
+    if (check === true) {
+        //document.getElementById("row" + no + "").outerHTML = "";
+        let tmp = {
+            name: fullName,
+            userId: id
+        };
+
+        let jsonPayload = JSON.stringify(tmp);
+
+        let url = urlBase + '/DeleteContact.' + extension;
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        try {
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    console.log("Contact has been deleted");
+					searchContact();
+
+                }
+            };
+            xhr.send(jsonPayload);
+        } catch (err) {
+            console.log(err.message);
+        }
+
+    };
 }
