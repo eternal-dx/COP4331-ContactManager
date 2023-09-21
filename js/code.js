@@ -90,10 +90,11 @@ function readCookie()
 	
 	if( userId < 0 )
 	{
-		window.location.href = "index.html";
+		if (window.location.pathname.split("/").slice(-1) != "index.html") window.location.href = "index.html";
 	}
 	else
 	{
+		if (window.location.pathname.split("/").slice(-1) != "contact.html") window.location.href = "contact.html";
 		document.getElementById("welcomeText").innerHTML = "Welcome, " + firstName + " " + lastName + "!";
 	}
 }
