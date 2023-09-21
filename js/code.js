@@ -220,7 +220,7 @@ function searchContact()
 
 	let tmp = {
 		search: srch,
-        userID: userId
+        userId: userId
     };
 	let jsonPayload = JSON.stringify( tmp );
 
@@ -239,6 +239,9 @@ function searchContact()
 				console.log(jsonObject);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
+				if (jsonObject.results == NULL) {
+					console.log("Contacts is NULL");
+				}
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
 					arr[i] = jsonObject.results[i].ID;
