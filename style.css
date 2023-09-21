@@ -26,7 +26,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif' !important;
 }
 
 form {
@@ -54,12 +54,13 @@ header {
 .header-text {
     font-size: 45px;
     font-weight: bold;
+    text-align: center;
     color: white;
     text-shadow: var(--darker-text-outline);
 }
 
 #header-center {
-    max-width: 40%;
+    max-width: 50%;
     text-align: center;
 }
 
@@ -83,6 +84,7 @@ header {
 .main-text {
     font-size: 75px;
     font-weight: bold;
+    text-align: center;
     color: white;
     text-shadow: var(--darker-text-outline);
 }
@@ -91,10 +93,10 @@ header {
     place-items: center;
 }
 
-.sub-main-text,
 .sub-header-text {
-	font-size: 30px;
+    font-size: 30px;
 	font-weight: bold;
+    text-align: center;
 	color: white;
     text-shadow: var(--dark-text-outline);
 }
@@ -143,7 +145,7 @@ header {
 
 #logo:hover {
     transition: 0.1s ease-in;
-    opacity: 0.5;
+    filter: brightness(75%);
 }
 
 #add-contact-div {
@@ -214,8 +216,15 @@ header {
 
 .table-wrapper {
     width: 100%;
+    height: 100%;
     overflow: auto;
     display: inline-block;
+    margin-top: 15px;
+}
+
+.table-wrapper tbody tr:hover {
+    transition: 0.15s ease-in;
+    filter: brightness(80%);
 }
 
 .table-striped > thead > tr > th {
