@@ -9,6 +9,9 @@
     
     --light-button-outline: 3px white solid;
     --heavy-button-outline: 4px white solid;
+
+    --odd-row-table-color: #FEEED5;
+    --even-row-table-color: #E2BA87;
 }
 
 * {
@@ -37,15 +40,6 @@ label {
     letter-spacing: 0.5px;
 	color: white;
     text-shadow: var(--dark-text-outline);
-}
-
-p {
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #FF160C;
-    text-shadow: var(--dark-text-outline);
-    letter-spacing: 1.2px;
 }
 
 /* Styles for Header */
@@ -147,6 +141,11 @@ header {
     left: 0;
 }
 
+#logo:hover {
+    transition: 0.1s ease-in;
+    opacity: 0.5;
+}
+
 #add-contact-div {
     display: flex;
     margin-left: 1%;
@@ -192,7 +191,7 @@ header {
     background-color: var(--darker-shadow);
     border-radius: 10px;
     padding: 10px;
-    margin-top: 30px;
+    margin: 30px 0 30px;
 }
 
 .modal-content {
@@ -211,4 +210,24 @@ header {
 #logoutButton {
     width: 20%;
     border: var(--light-button-outline);
+} 
+
+.table-wrapper {
+    width: 100%;
+    overflow: auto;
+    display: inline-block;
+}
+
+.table-striped > thead > tr > th {
+    background-color: var(--even-row-table-color);
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: var(--odd-row-table-color);
+}
+
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+    background-color: var(--even-row-table-color);
 }
