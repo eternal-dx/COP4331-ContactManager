@@ -15,7 +15,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where FirstName like ? and LastName like ? and UserID=?");
+		$stmt = $conn->prepare("select FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ?) and UserID=?");
 		$contactFirstName = "%" . $inData["firstName"] . "%";
 		$contactLastName = "%" . $inData["lastName"] . "%";
 		$stmt->bind_param("sss", $contactFirstName, $contactLastName, $inData["userId"]);
