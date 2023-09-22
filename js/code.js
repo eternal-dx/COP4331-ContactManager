@@ -246,41 +246,36 @@ function searchContact()
 				let jsonObject = JSON.parse( xhr.responseText );
 				console.log(jsonObject);
 				console.log(xhr.responseText);
-				console.log(jsonObject.results);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
-				let resultNum = jsonObject.results.name.length;
+				let resultNum = jsonObject.name.length;
 				for( let i=0; i<resultNum; i++ )
 				{
-					if( i < resultNum)
-					{
-						const tr = document.createElement("tr");
-						tr.setAttribute("id", "tr");
-						tr.innerHTML = `
-						<td id="tableFirstName${i}">${jsonObject.results.name[i]}</td>
-						<td id="tableLastName${i}">${jsonObject.results.lastName[i]}</td>
-						<td id="tableEmail${i}">${jsonObject.results.email[i]}</td>
-						<td id="tablePhoneNumber${i}">${jsonObject.results.phone[i]}</td>
-						<td>
-							<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${i})">
-								<span class="button__text"></span>
-								<span class="button__icon">
-									<ion-icon name="trash-outline"></ion-icon>
-								</span>
-							</button>
+					const tr = document.createElement("tr");
+					tr.setAttribute("id", "tr");
+					tr.innerHTML = `
+					<td id="tableFirstName${i}">${jsonObject.name[i]}</td>
+					<td id="tableLastName${i}">${jsonObject.lastName[i]}</td>
+					<td id="tableEmail${i}">${jsonObject.email[i]}</td>
+					<td id="tablePhoneNumber${i}">${jsonObject.phone[i]}</td>
+					<td>
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${i})">
+							<span class="button__text"></span>
+							<span class="button__icon">
+								<ion-icon name="trash-outline"></ion-icon>
+							</span>
+						</button>
 
-							<button id="edit-btn" type="button" class="btn" onclick="updateContact(${i});" data-bs-toggle="modal" data-bs-target=".add-contact-modal">
-								<span class="button__text"></span>
-								<span class="button__icon">
-									<ion-icon name="create-outline"></ion-icon>
-								</span>
-							</button>
-						</td>
-						`
-						contactList += tr;
-						tableBody.appendChild(tr);
-					}
-					
+						<button id="edit-btn" type="button" class="btn" onclick="updateContact(${i});" data-bs-toggle="modal" data-bs-target=".add-contact-modal">
+							<span class="button__text"></span>
+							<span class="button__icon">
+								<ion-icon name="create-outline"></ion-icon>
+							</span>
+						</button>
+					</td>
+					`
+					contactList += tr;
+					tableBody.appendChild(tr);
 				}
 				
 			}
