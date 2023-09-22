@@ -226,7 +226,8 @@ function searchContact()
 	let contactList = "";
 
 	let tmp = {
-		search: srch,
+		firstName: srch,
+		lastName: srch,
         userId: userId
     };
 	let jsonPayload = JSON.stringify( tmp );
@@ -245,6 +246,7 @@ function searchContact()
 				let jsonObject = JSON.parse( xhr.responseText );
 				console.log(jsonObject);
 				console.log(xhr.responseText);
+				console.log(jsonObject.results);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
 				let resultNum = jsonObject.results.name.length;
