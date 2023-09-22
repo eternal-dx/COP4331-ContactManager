@@ -28,9 +28,9 @@
                 <h1 class="main-text">Contact Captain</h1>
             </div>
             <br>
-            <div id="center-buttons">
-                <button class="btn btn-primary" id="login-button">Log In</button>
-                <button class="btn btn-secondary" id="signup-button">Sign Up</button>
+            <div class="button-handler" id="center-buttons">
+                <button class="btn btn-primary" id="loginButton">Log In</button>
+                <button class="btn btn-secondary" id="signupButton">Sign Up</button>
             </div>
         </div>
         <!-- Login -->
@@ -38,29 +38,29 @@
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
                 <h1 class="main-text">Contact Captain</h1>
-                <h3 class="sub-main-text">~ Log In ~</h3>
+                <h3 class="sub-header-text">~ Log In ~</h3>
             </div>
             <br>
             <form>
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="text" class="form-control" id="loginName" placeholder="Username">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="loginName" placeholder="Username">
+                    <label for="loginName">Username</label>
                 </div>
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                    <label for="loginPassword">Password</label>
                 </div>
                 <div class="mb-4">
-                    <input type="checkbox" class="form-check-input me-2" id="loginRememberMe" value="">
-                    <label class="form-check-label" for="loginRememberMe">Remember Me</label>
+                    <input type="checkbox" class="form-check-input me-2" id="rememberMe" value="">
+                    <label class="form-check-label" for="rememberMe" id="rememberMeLabel">Remember Me</label>
                 </div>
                 <div class="mb-4">
                     <span id="loginResult"></span>
                 </div>
-                <button type="button" class="btn btn-primary" id="login-submit-button" onclick="doLogin();">Log In</button>
-                <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                <div class="button-handler">
+                    <button type="button" class="btn btn-primary" id="loginSubmitButton" onclick="doLogin();">Log In</button>
+                    <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                </div>
             </form>
         </div>
         <!-- Sign Up -->
@@ -68,45 +68,38 @@
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
                 <h1 class="main-text">Contact Captain</h1>
-                <h3 class="sub-main-text">~ Sign Up ~</h3>
+                <h3 class="sub-header-text">~ Sign Up ~</h3>
             </div>
-            <br>
             <form>
                 <div class="form-group row mb-4">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                            <label for="firstName">First Name</label>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        <div class="form-floating col">
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                            <label for="lastName">Last Name</label>
+                        </div>
                     </div>
                 </div>
-                <!--
-                <div class="form-group row mb-4">
-                    <div class="col-md-6">
-                        <input type="tel" class="form-control" id="phoneNumber" placeholder="xxx-xxx-xxxx">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="email" class="form-control" id="email" placeholder="example@email.com">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="signupName" placeholder="Username">
+                    <label for="signupName">Username</label>
                 </div>
-                -->
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="text" class="form-control" id="signupName" placeholder="Username">
-                    </div>
-                </div>
-                <div class="form-group row mb-4">
-                    <div>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Password">
-                    </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                    <label for="signupPassword">Password</label>
                 </div>
                 <div class="mb-4">
-                    <input type="checkbox" class="form-check-input me-2" id="signupRememberMe" value="">
-                    <label class="form-check-label" for="signupRememberMe">Remember Me</label>
+                    <span id="signupResult"></span>
                 </div>
-                <span id="signupResult"></span>
-                <button type="button" class="btn btn-primary" id="signup-submit-button" onclick="doSignUp();">Sign Up</button>
-                <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                <div class="button-handler">
+                    <button type="button" class="btn btn-primary" id="signupSubmitButton" onclick="doSignUp();">Sign Up</button>
+                    <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
+                </div>
             </form>
         </div>
     </div>
