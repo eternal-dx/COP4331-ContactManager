@@ -49,7 +49,7 @@
 		}
 		else
 		{
-			returnWithInfo( $firstNameResults, $lastNameResults, $phoneResults, $emailResults );
+			returnWithInfo( $firstNameResults, $lastNameResults, $phoneResults, $emailResults, $idResults );
 		}
 		
 		$stmt->close();
@@ -73,9 +73,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstNameResults, $lastNameResults, $phoneResults, $emailResults )
+	function returnWithInfo( $firstNameResults, $lastNameResults, $phoneResults, $emailResults, $idResults )
 	{
-		$retValue = '{"name":[' . $firstNameResults . '], "lastName":[' . $lastNameResults . '], "phone":[' . $phoneResults . '], "email":[' . $emailResults . '], "ID":[' . $idResults . '],"error":""}';
+		$retValue = '{"FirstName":[' . $firstNameResults . '], "lastName":[' . $lastNameResults . '], "phone":[' . $phoneResults . '], "email":[' . $emailResults . '], "ID":[' . $idResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
