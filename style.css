@@ -175,6 +175,28 @@ header {
     height: 40px;
 }
 
+#deleteButton {
+    background-color: #cf1818;
+    border: none;
+    background-image: url(images/delete_x.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+#edit-btn {
+    background-color: #cfe95d;
+    border: none;
+    background-image: url(images/edit_icon.png);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
 #addContactButton:hover {
    transition: 0.1s ease-in;
    background-color: #146c43;
