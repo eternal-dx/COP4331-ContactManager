@@ -158,7 +158,7 @@ header {
 
 #searchContactButton {
     background-image: url(images/search_contact.png);
-    background-position: center;
+    background-position: right;
     background-size: 55%;
     background-repeat: no-repeat;
     width: 10%;
@@ -178,7 +178,7 @@ header {
 #deleteButton {
     background-color: #cf1818;
     border: none;
-    background-image: url(images/delete_x.png);
+    background-image: url(images/delete_icon.png);
     background-position: center;
     background-size: 100%;
     background-repeat: no-repeat;
