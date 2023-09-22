@@ -245,26 +245,27 @@ function searchContact()
 				console.log(xhr.responseText);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
-				for( let i=0; i<jsonObject.results.length; i++ )
+				let resultNum = jsonObject.results.FirstName.length;
+				for( let i=0; i<resultNum; i++ )
 				{
-					if( i < jsonObject.results.length)
+					if( i < resultNum)
 					{
 						const tr = document.createElement("tr");
 						tr.setAttribute("id", "tr");
 						tr.innerHTML = `
-						<td id="tableFirstName${i}">${jsonObject.results[i].firstname}</td>
-						<td id="tableLastName${i}">${jsonObject.results[i].lastname}</td>
-						<td id="tableEmail${i}">${jsonObject.results[i].email}</td>
-						<td id="tablePhoneNumber${i}">${jsonObject.results[i].phonenumber}</td>
+						<td id="tableFirstName${i}">${jsonObject.results.FirstName[i]}</td>
+						<td id="tableLastName${i}">${jsonObject.results.LastName[i]}</td>
+						<td id="tableEmail${i}">${jsonObject.results.Email[i]}</td>
+						<td id="tablePhoneNumber${i}">${jsonObject.results.Phone[i]}</td>
 						<td>
-							<button id="deleteButton" type="button" class="btn" onclick='deleteContact(${i});'>
+							<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${i})">
 								<span class="button__text"></span>
 								<span class="button__icon">
 									<ion-icon name="trash-outline"></ion-icon>
 								</span>
 							</button>
 
-							<button id="edit-btn" type="button" class="btn" onclick='updateContact(${i});'>
+							<button id="edit-btn" type="button" class="btn" onclick="updateContact(${i});" data-bs-toggle="modal" data-bs-target=".add-contact-modal">
 								<span class="button__text"></span>
 								<span class="button__icon">
 									<ion-icon name="create-outline"></ion-icon>
@@ -291,12 +292,14 @@ function searchContact()
 
 function updateContact(id)
 {
-	let update_name = document.getElementById("updateName").value;
+	let update_first = document.getElementById("updateFirstName").value;
+	let update_last = document.getElementById("updateLastName").value;
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
 
     let tmp = {
-		newName: update_name,
+		firstName: update_first,
+		lastName: update_last,
         newPhone: update_phonenumber,
         newEmail: update_emailaddress,
         userID: id
@@ -326,12 +329,12 @@ function deleteContact(id)
 {
 	let firstName = document.getElementById("tableFirstName"+i).innerHTML;
 	let lastName = document.getElementById("tableLastName"+i).innerHTML;
-	let fullName = firstName + lastName;
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         //document.getElementById("row" + no + "").outerHTML = "";
         let tmp = {
-            name: fullName,
+            firstName: firstName,
+			lastName: lastName,
             userId: id
         };
 

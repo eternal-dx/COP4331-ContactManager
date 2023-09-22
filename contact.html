@@ -16,8 +16,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- JS -->
 	<script src="js/script.js"></script>
-	<script src="js/code.js"></script>
-
+    <script src="js/code.js"></script>
+	
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function()
 		{
@@ -57,10 +57,10 @@
 				<thead>
 					<tr>
 						<th scope="col">First Name</th>
-						<th scope="col">Last Name</th>
-						<th scope="col">Email</th>
-						<th scope="col">Phone</th>
-					</tr>
+			<th scope="col">Last Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			</tr>
 				</thead>
 				<tbody id="tableBody">
 				</tbody>
@@ -71,26 +71,26 @@
 	<div class="modal fade add-contact-modal" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
-				<form>
+								<form>
 					<h1 class="header-text mb-4">Add Contact</h1>
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control" id="contactFirst" placeholder="First Name">
-						<label for="contactTextFirst">First Name</label>
+<label for="contactTextFirst">First Name</label>
 					</div>
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control" id="contactLast" placeholder="Last Name">
-						<label for="contactTextLast">Last Name</label>
+<label for="contactTextLast">Last Name</label>
 					</div>
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control" id="contactPhone" placeholder="Phone #">
-						<label for="contactTextPhone">Phone #</label>
+<label for="contactTextPhone">Phone #</label>
 					</div>
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control" id="contactEmail" placeholder="Email">
-						<label for="contactTextEmail">Email</label>
+<label for="contactTextEmail">Email</label>
 					</div>
-					<span id="contactAddResult"></span>
-					<div class="button-handler">
+											<span id="contactAddResult"></span>
+										<div class="button-handler">
 						<button type="button" class="btn btn-primary" onclick="addContact();">Add</button>
 						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 					</div>
