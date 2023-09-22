@@ -5,6 +5,8 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
+
+
 function doLogin()
 {
 	userId = 0;
@@ -248,31 +250,62 @@ function searchContact()
 				console.log(xhr.responseText);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
-				let resultNum = jsonObject.name.length;
+				let resultNum = jsonObject.firstName.length;
 				for( let i=0; i<resultNum; i++ )
 				{
 					const tr = document.createElement("tr");
 					tr.setAttribute("id", "tr");
 					tr.innerHTML = `
-					<td id="tableFirstName${i}">${jsonObject.name[i]}</td>
-					<td id="tableLastName${i}">${jsonObject.lastName[i]}</td>
-					<td id="tableEmail${i}">${jsonObject.email[i]}</td>
-					<td id="tablePhoneNumber${i}">${jsonObject.phone[i]}</td>
+					<td id="tableFirstName">${jsonObject.FirstName[i]}</td>
+					<td id="tableLastName">${jsonObject.lastName[i]}</td>
+					<td id="tableEmail">${jsonObject.email[i]}</td>
+					<td id="tablePhoneNumber">${jsonObject.phone[i]}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${i})">
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${jsonObject.ID[i]})">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="trash-outline"></ion-icon>
 							</span>
 						</button>
 
-						<button id="edit-btn" type="button" class="btn" onclick="updateContact(${i});" data-bs-toggle="modal" data-bs-target=".add-contact-modal">
+						<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="create-outline"></ion-icon>
 							</span>
 						</button>
 					</td>
+
+					<div class="modal fade .edit-contact-modal" tabindex="-1" role="dialog">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<form>
+									<h1 class="header-text mb-4">Edit Contact</h1>
+									<div class="form-floating mb-4">
+										<input type="text" class="form-control" id="updateFirstName" placeholder="First Name" value="${jsonObject.FirstName[i]}">
+										<label for="contactTextFirst">First Name</label>
+									</div>
+									<div class="form-floating mb-4">
+										<input type="text" class="form-control" id="updateLastName" placeholder="Last Name" value="${jsonObject.lastName[i]}">
+										<label for="contactTextLast">Last Name</label>
+									</div>
+									<div class="form-floating mb-4">
+										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${jsonObject.email[i]}">
+										<label for="contactTextPhone">Phone #</label>
+									</div>
+									<div class="form-floating mb-4">
+										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${jsonObject.phone[i]}">
+										<label for="contactTextEmail">Email</label>
+									</div>
+									<span id="contactUpdateResult"></span>
+									<div class="button-handler">
+										<button type="button" class="btn btn-primary" onclick="(updateContact(${jsonObject.phone[i]});">Update</button>
+										<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 					`
 					contactList += tr;
 					tableBody.appendChild(tr);
@@ -315,7 +348,8 @@ function updateContact(id)
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
-                searchContacts();
+				document.getElementById("contactUpdateResult").innerHTML = "Contact has been added";
+                searchContact();
             }
         };
         xhr.send(jsonPayload);
@@ -326,8 +360,8 @@ function updateContact(id)
 
 function deleteContact(id)
 {
-	let firstName = document.getElementById("tableFirstName"+i).innerHTML;
-	let lastName = document.getElementById("tableLastName"+i).innerHTML;
+	let firstName = document.getElementById("tableFirstName").innerHTML;
+	let lastName = document.getElementById("tableLastName").innerHTML;
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
     if (check === true) {
         //document.getElementById("row" + no + "").outerHTML = "";
