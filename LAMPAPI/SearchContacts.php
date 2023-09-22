@@ -39,7 +39,7 @@
 			$lastNameResults .= '"' . $row["LastName"] . '"';
 			$phoneResults .= '"' . $row["Phone"] . '"';
 			$emailResults .= '"' . $row["Email"] . '"';
-			$idResults .= '"' . $row["ID"] . '"';
+			$idResults .= $row["ID"];
 
 		}
 		
