@@ -1,7 +1,8 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$contact = $inData["contact"];
+	$firstName = $inData["firstName"];
+  $lastName = $inData["lastName"];
 	$phone = $inData["phone"];
 	$email = $inData["email"];
 	$userID = $inData["userId"];
@@ -13,12 +14,12 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (Name, Phone, Email, UserID) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $contact, $phone, $email, $userID);
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email, UserID) VALUES(?,?,?,?,?)");
+		$stmt->bind_param("sssss", $firstName, $lastName, $phone, $email, $userID);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithInfo($contact, $phone, $email, $userID);
+		returnWithInfo($firstName, $lastName, $phone, $email, $userID);
 	}
 
 	function getRequestInfo()
@@ -38,9 +39,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  function returnWithInfo( $contact, $phone, $email, $userID )
+  function returnWithInfo( $firstName, $lastName, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","phone":"' . $phone . '","email":"' . $email . '","userId":' . $userID . ',"error":""}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","phone":"' . $phone . '","email":"' . $email . '","userId":' . $userID . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
