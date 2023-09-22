@@ -2,7 +2,8 @@
 
 	$inData = getRequestInfo();
 
-    $newName = $inData["newName"];
+    $firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
     $newPhone = $inData["newPhone"];
     $newEmail = $inData["newEmail"];
     $userID = $inData["userId"];
@@ -14,20 +15,13 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? where UserID=?");
-        $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $userID);
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? where UserID=?");
+        $stmt->bind_param("ssssi", $firstName, $lastName, $newPhone, $newEmail, $userID);
         $stmt->execute();
-		if ( $stmt->affected_rows == 0 )
-		{
-			returnWithError( "No Records Updated" );
-		}
-		else
-		{
-			returnWithInfo( $newName, $newPhone, $newEmail, $userID );
-		}
-
 		$stmt->close();
 		$conn->close();
+
+        returnWithInfo($firstName, $lastName, $newPhone, $newEmail, $userID);
 	}
 
 	function getRequestInfo()
@@ -47,9 +41,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $contact, $phone, $email, $userID )
+	function returnWithInfo( $firstName, $lastName, $phone, $email, $userID )
 	{
-		$retValue = '{"contact":"' . $contact . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userID":' . $userID . '}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","newPhone":"' . $phone . '","newEmail":"' . $email . '","userID":' . $userID . '}';
 		sendResultInfoAsJson( $retValue );
 	}
     
