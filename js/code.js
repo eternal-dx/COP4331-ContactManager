@@ -225,7 +225,7 @@ function searchContact()
 
 	let tmp = {
 		search: srch,
-        userID: id_val
+        userId: userId
     };
 	let jsonPayload = JSON.stringify( tmp );
 
@@ -242,12 +242,11 @@ function searchContact()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				console.log(jsonObject);
+				console.log(xhr.responseText);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
 				for( let i=0; i<jsonObject.results.length; i++ )
 				{
-					arr[i] = jsonObject.results[i].ID;
-
 					if( i < jsonObject.results.length)
 					{
 						const tr = document.createElement("tr");

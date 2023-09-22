@@ -5,7 +5,7 @@
     $newName = $inData["newName"];
     $newPhone = $inData["newPhone"];
     $newEmail = $inData["newEmail"];
-    $userID = $inData["userID"];
+    $userID = $inData["userId"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
 	if ($conn->connect_error) 
@@ -17,10 +17,17 @@
 		$stmt = $conn->prepare("UPDATE Contacts SET Name=?, Phone=?, Email=? where UserID=?");
         $stmt->bind_param("sssi", $newName, $newPhone, $newEmail, $userID);
         $stmt->execute();
+		if ( $stmt->affected_rows == 0 )
+		{
+			returnWithError( "No Records Updated" );
+		}
+		else
+		{
+			returnWithInfo( $newName, $newPhone, $newEmail, $userID );
+		}
+
 		$stmt->close();
 		$conn->close();
-
-        returnWithInfo($newName, $newPhone, $newEmail, $userID);
 	}
 
 	function getRequestInfo()

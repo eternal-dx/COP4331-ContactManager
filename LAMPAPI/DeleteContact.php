@@ -3,7 +3,7 @@
 	$inData = getRequestInfo();
 
 	$name = $inData["Name"];
-	$userID = $inData["userID"];
+	$userID = $inData["userId"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
 	if ($conn->connect_error) 
@@ -15,10 +15,17 @@
 		$stmt = $conn->prepare("DELETE from Contacts where Name=? and UserID=?");
 		$stmt->bind_param("si", $name, $userID);
 		$stmt->execute();
+		if ( $stmt->affected_rows == 0 )
+		{
+			returnWithError( "No Records Found" );
+		}
+		else
+		{
+			returnWithInfo( $name, $userID );
+		}
+
 		$stmt->close();
 		$conn->close();
-
-		returnWithInfo($name, $userID);
 	}
 
 	function getRequestInfo()
@@ -40,7 +47,7 @@
  
   	function returnWithInfo( $name, $userID )
 	{
-		$retValue = '{"Name":"' . $name . '","userID":' . $userID . '}';
+		$retValue = '{"Name":"' . $name . '","userId":' . $userID . '}';
 		sendResultInfoAsJson( $retValue );
 	}
     
