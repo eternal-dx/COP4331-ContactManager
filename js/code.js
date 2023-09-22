@@ -59,9 +59,10 @@ function doLogin()
 
 function saveCookie()
 {
-	let minutes = 20;
+	// If rememberMe is active, store cookie for an entire month
+	let minutes = document.getElementById("rememberMe").checked ? 43800 : 20;
 	let date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
+	date.setTime(date.getTime() + (minutes * 60 * 1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 
@@ -186,7 +187,8 @@ function addContact()
 	document.getElementById("contactAddResult").innerHTML = "";
 
 	let tmp = { 
-			contact: firstname + lastname, 
+			firstName: firstname,
+			lastName: lastname,
 			phone: phonenumber,
 			email: emailaddress,
 			userId: userId 
