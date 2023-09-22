@@ -2,8 +2,7 @@
 
 	$inData = getRequestInfo();
 
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
+	$ID = $inData["ID"];
 	$userID = $inData["userId"];
 
 	$conn = new mysqli("localhost", "Test", "TestUser", "COP4331");
@@ -13,8 +12,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("DELETE from Contacts where FirstName=? and LastName=? and UserID=?");
-		$stmt->bind_param("ssi", $firstName, $lastName, $userID);
+		$stmt = $conn->prepare("DELETE from Contacts where ID=? and UserID=?");
+		$stmt->bind_param("ii", $ID, $userID);
 		$stmt->execute();
 		if ( $stmt->affected_rows == 0 )
 		{
@@ -22,7 +21,7 @@
 		}
 		else
 		{
-			returnWithInfo( $firstName, $lastName, $userID );
+			returnWithInfo( $ID, $userID );
 		}
 
 		$stmt->close();
@@ -46,9 +45,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  	function returnWithInfo( $firstName, $lastName, $userID )
+  	function returnWithInfo( $ID, $userID )
 	{
-		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","userId":' . $userID . '}';
+		$retValue = '{"ID":' . $ID . '","UserId":' . $userID . '}';
 		sendResultInfoAsJson( $retValue );
 	}
     
