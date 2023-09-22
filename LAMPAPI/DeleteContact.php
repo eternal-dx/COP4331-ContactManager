@@ -22,7 +22,7 @@
 		}
 		else
 		{
-			returnWithInfo( $name, $userID );
+			returnWithInfo( $firstName, $lastName, $userID );
 		}
 
 		$stmt->close();
@@ -46,9 +46,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
  
-  	function returnWithInfo( $name, $userID )
+  	function returnWithInfo( $firstName, $lastName, $userID )
 	{
-		$retValue = '{"Name":"' . $name . '","userId":' . $userID . '}';
+		$retValue = '{"firstName":"' . $firstName . '","lastName":"' . $lastName . '","userId":' . $userID . '}';
 		sendResultInfoAsJson( $retValue );
 	}
     
