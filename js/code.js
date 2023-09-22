@@ -247,7 +247,7 @@ function searchContact()
 				console.log(xhr.responseText);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
-				let resultNum = jsonObject.results.FirstName.length;
+				let resultNum = jsonObject.results.name.length;
 				for( let i=0; i<resultNum; i++ )
 				{
 					if( i < resultNum)
@@ -255,10 +255,10 @@ function searchContact()
 						const tr = document.createElement("tr");
 						tr.setAttribute("id", "tr");
 						tr.innerHTML = `
-						<td id="tableFirstName${i}">${jsonObject.results.FirstName[i]}</td>
-						<td id="tableLastName${i}">${jsonObject.results.LastName[i]}</td>
-						<td id="tableEmail${i}">${jsonObject.results.Email[i]}</td>
-						<td id="tablePhoneNumber${i}">${jsonObject.results.Phone[i]}</td>
+						<td id="tableFirstName${i}">${jsonObject.results.name[i]}</td>
+						<td id="tableLastName${i}">${jsonObject.results.lastName[i]}</td>
+						<td id="tableEmail${i}">${jsonObject.results.email[i]}</td>
+						<td id="tablePhoneNumber${i}">${jsonObject.results.phone[i]}</td>
 						<td>
 							<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${i})">
 								<span class="button__text"></span>
