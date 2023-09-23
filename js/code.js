@@ -5,6 +5,8 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
+let tablearr = [];
+
 function doLogin()
 {
 	userId = 0;
@@ -265,6 +267,11 @@ function searchContact()
 					let contactEmail = jsonObject.email[i];
 					let contactID = jsonObject.ID[i];
 
+					const firstNameForm = document.querySelector("updateFirstName");
+					const lastNameForm = document.querySelector("updateLastName");
+					const phoneForm = document.querySelector("updatePhone");
+					const emailForm = document.querySelector("updateEmail");
+
 					const tr = document.createElement("tr");
 					tr.setAttribute("id", "tr");
 					tr.innerHTML = `
@@ -288,41 +295,17 @@ function searchContact()
 							</span>
 						</button>
 					</td>
-					
-					<div class="modal fade edit-contact-modal" tabindex="-1" role="dialog">
-						<div class="modal-dialog modal-dialog-centered">
-							<div class="modal-content">
-								<form>
-									<h1 class="header-text mb-4">Edit Contact</h1>
-									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateFirstName" placeholder="First Name" value="${contactFirst}">
-										<label for="updateFirstName">First Name</label>
-									</div>
-									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateLastName" placeholder="Last Name" value="${contactLast}">
-										<label for="updateLastName">Last Name</label>
-									</div>
-									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${contactPhone}">
-										<label for="updatePhone">Phone #</label>
-									</div>
-									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${contactEmail}">
-										<label for="updateEmail">Email</label>
-									</div>
-									<span id="contactUpdateResult"></span>
-									<div class="button-handler">
-										<button type="button" class="btn btn-primary" onclick="(updateContact(${contactID});">Update</button>
-										<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
 					`
 
 					contactList += tr;
 					tableBody.appendChild(tr);
+					firstNameForm.setAttribute("value", contactFirst);
+					lastNameForm.setAttribute("value", contactLast);
+					phoneForm.setAttribute("value", contactPhone);
+					emailForm.setAttribute("value", contactEmail);
+					document.getElementById("updateBtn").onclick = updateContact(contactID);
+
+
 				}
 				
 			}
@@ -393,6 +376,7 @@ function deleteContact(id)
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log("Contact has been deleted");
+					document.getElementById("searchText").innerHTML = ""; //refresh the search? or table.
 					searchContact();
                 }
             };

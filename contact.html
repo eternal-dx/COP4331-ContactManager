@@ -101,5 +101,37 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade edit-contact-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<form>
+					<h1 class="header-text mb-4">Edit Contact</h1>
+					<div class="form-floating mb-4">
+						<input type="text" class="form-control" id="updateFirstName" placeholder="First Name">
+						<label for="updateFirstName">First Name</label>
+					</div>
+					<div class="form-floating mb-4">
+						<input type="text" class="form-control" id="updateLastName" placeholder="Last Name">
+						<label for="updateLastName">Last Name</label>
+					</div>
+					<div class="form-floating mb-4">
+						<input type="text" class="form-control" id="updatePhone" placeholder="Phone #">
+						<label for="updatePhone">Phone #</label>
+					</div>
+					<div class="form-floating mb-4">
+						<input type="text" class="form-control" id="updateEmail" placeholder="Email">
+						<label for="updateEmail">Email</label>
+					</div>
+					<span id="contactUpdateResult"></span>
+					<div class="button-handler">
+						<button type="button" class="btn btn-primary" id="updateBtn">Update</button>
+						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
