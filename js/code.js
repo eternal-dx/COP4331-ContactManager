@@ -279,7 +279,8 @@ function searchContact()
 								<ion-icon name="trash-outline"></ion-icon>
 							</span>
 						</button>
-
+					</td>
+					<td>
 						<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
 							<span class="button__text"></span>
 							<span class="button__icon">
