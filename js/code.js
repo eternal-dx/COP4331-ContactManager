@@ -244,22 +244,36 @@ function searchContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
+
+				if (jsonObject == null) {
+					console.log("No contacts found!");
+					return;
+				}
+
 				console.log(jsonObject);
 				console.log(xhr.responseText);
+
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
+
 				let resultNum = jsonObject.FirstName.length;
 				for( let i=0; i<resultNum; i++ )
 				{
+					let contactFirst = jsonObject.FirstName[i];
+					let contactLast = jsonObject.lastName[i];
+					let contactPhone = jsonObject.phone[i];
+					let contactEmail = jsonObject.email[i];
+					let contactID = jsonObject.ID[i];
+
 					const tr = document.createElement("tr");
 					tr.setAttribute("id", "tr");
 					tr.innerHTML = `
-					<td id="tableFirstName">${jsonObject.FirstName[i]}</td>
-					<td id="tableLastName">${jsonObject.lastName[i]}</td>
-					<td id="tableEmail">${jsonObject.email[i]}</td>
-					<td id="tablePhoneNumber">${jsonObject.phone[i]}</td>
+					<td id="tableFirstName">${contactFirst}</td>
+					<td id="tableLastName">${contactLast}</td>
+					<td id="tableEmail">${contactPhone}</td>
+					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${jsonObject.ID[i]})">
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${contactID})">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="trash-outline"></ion-icon>
@@ -273,31 +287,31 @@ function searchContact()
 							</span>
 						</button>
 					</td>
-
-					<div class="modal fade .edit-contact-modal" tabindex="-1" role="dialog">
+					
+					<div class="modal fade edit-contact-modal" tabindex="-1" role="dialog">
 						<div class="modal-dialog modal-dialog-centered">
 							<div class="modal-content">
 								<form>
 									<h1 class="header-text mb-4">Edit Contact</h1>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateFirstName" placeholder="First Name" value="${jsonObject.FirstName[i]}">
-										<label for="contactTextFirst">First Name</label>
+										<input type="text" class="form-control" id="updateFirstName" placeholder="First Name" value="${contactFirst}">
+										<label for="updateFirstName">First Name</label>
 									</div>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateLastName" placeholder="Last Name" value="${jsonObject.lastName[i]}">
-										<label for="contactTextLast">Last Name</label>
+										<input type="text" class="form-control" id="updateLastName" placeholder="Last Name" value="${contactLast}">
+										<label for="updateLastName">Last Name</label>
 									</div>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${jsonObject.phone[i]}">
-										<label for="contactTextPhone">Phone #</label>
+										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${contactPhone}">
+										<label for="updatePhone">Phone #</label>
 									</div>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${jsonObject.email[i]}">
-										<label for="contactTextEmail">Email</label>
+										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${contactEmail}">
+										<label for="updateEmail">Email</label>
 									</div>
 									<span id="contactUpdateResult"></span>
 									<div class="button-handler">
-										<button type="button" class="btn btn-primary" onclick="(updateContact(${jsonObject.ID[i]});">Update</button>
+										<button type="button" class="btn btn-primary" onclick="(updateContact(${contactID});">Update</button>
 										<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 									</div>
 								</form>
@@ -305,6 +319,7 @@ function searchContact()
 						</div>
 					</div>
 					`
+
 					contactList += tr;
 					tableBody.appendChild(tr);
 				}
@@ -334,7 +349,6 @@ function updateContact(id)
         newEmail: update_emailaddress,
         userID: id
     };
-
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/UpdateContacts.' + extension;
@@ -361,14 +375,12 @@ function deleteContact(id)
 	let firstName = document.getElementById("tableFirstName").innerHTML;
 	let lastName = document.getElementById("tableLastName").innerHTML;
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
-    if (check === true) {
-        //document.getElementById("row" + no + "").outerHTML = "";
-        let tmp = {
-            firstName: firstName,
-			lastName: lastName,
-            userId: id
-        };
 
+    if (check === true) {
+        let tmp = {
+            ID: id,
+            userId: userId
+        };
         let jsonPayload = JSON.stringify(tmp);
 
         let url = urlBase + '/DeleteContact.' + extension;
@@ -379,16 +391,13 @@ function deleteContact(id)
         try {
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-
                     console.log("Contact has been deleted");
 					searchContact();
-
                 }
             };
             xhr.send(jsonPayload);
         } catch (err) {
             console.log(err.message);
         }
-
     };
 }
