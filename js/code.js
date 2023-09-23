@@ -5,8 +5,6 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 
-
-
 function doLogin()
 {
 	userId = 0;
@@ -250,7 +248,7 @@ function searchContact()
 				console.log(xhr.responseText);
 				const tableBody = document.getElementById("tableBody");
 				tableBody.innerHTML = "";
-				let resultNum = jsonObject.firstName.length;
+				let resultNum = jsonObject.FirstName.length;
 				for( let i=0; i<resultNum; i++ )
 				{
 					const tr = document.createElement("tr");
@@ -290,16 +288,16 @@ function searchContact()
 										<label for="contactTextLast">Last Name</label>
 									</div>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${jsonObject.email[i]}">
+										<input type="text" class="form-control" id="updatePhone" placeholder="Phone #" value="${jsonObject.phone[i]}">
 										<label for="contactTextPhone">Phone #</label>
 									</div>
 									<div class="form-floating mb-4">
-										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${jsonObject.phone[i]}">
+										<input type="text" class="form-control" id="updateEmail" placeholder="Email" value="${jsonObject.email[i]}">
 										<label for="contactTextEmail">Email</label>
 									</div>
 									<span id="contactUpdateResult"></span>
 									<div class="button-handler">
-										<button type="button" class="btn btn-primary" onclick="(updateContact(${jsonObject.phone[i]});">Update</button>
+										<button type="button" class="btn btn-primary" onclick="(updateContact(${jsonObject.ID[i]});">Update</button>
 										<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 									</div>
 								</form>
