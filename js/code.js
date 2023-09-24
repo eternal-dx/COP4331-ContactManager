@@ -296,11 +296,13 @@ function searchContact()
 
 					// Loads all information into the modal on click
 					let button = tr.querySelector("#edit-btn");
+					console.log(button);
 					button.addEventListener("click", function() {
-						document.getElementById("updateFirstName").placeholder = tr.cells[0].textContent;
-						document.getElementById("updateLastName").placeholder = tr.cells[1].textContent;
-						document.getElementById("updatePhone").placeholder = tr.cells[2].textContent;
-						document.getElementById("updateEmail").placeholder = tr.cells[3].textContent;
+						document.getElementById("updateFirstName").value = tr.cells[0].textContent;
+						document.getElementById("updateLastName").value = tr.cells[1].textContent;
+						document.getElementById("updatePhone").value = tr.cells[2].textContent;
+						document.getElementById("updateEmail").value = tr.cells[3].textContent;
+						console.log(tr.cells[0].textContent + " " + tr.cells[1].textContent + " " + tr.cells[2].textContent + " " + tr.cells[3].textContent);
 					});
 
 					tableBody.appendChild(tr);
