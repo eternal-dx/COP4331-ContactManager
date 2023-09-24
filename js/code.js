@@ -223,6 +223,7 @@ function addContact()
 function searchContact()
 {
 	let srch = document.getElementById("searchText").value;
+	
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	let tmp = {
@@ -324,6 +325,10 @@ function updateContact(id)
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
 
+	document.getElementById("contactUpdateResult").innerHTML = "";
+
+	console.log(id);
+
     let tmp = {
 		firstName: update_first,
 		lastName: update_last,
@@ -341,6 +346,10 @@ function updateContact(id)
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try {
         xhr.onreadystatechange = function () {
+
+			console.log(jsonObject);
+			console.log(xhr.responseText);
+
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
 				document.getElementById("contactUpdateResult").innerHTML = "Contact has been updated";
