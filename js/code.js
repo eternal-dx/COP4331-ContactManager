@@ -277,7 +277,7 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${contactID}, ${tr}});">
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${tr}');">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="trash-outline"></ion-icon>
@@ -295,8 +295,8 @@ function searchContact()
 					`
 
 					// Loads all information into the modal on click
-					let button = tr.querySelector("#edit-btn");
-					button.addEventListener("click", function() {
+					let editButton = tr.querySelector("#edit-btn");
+					editButton.addEventListener("click", function() {
 						document.getElementById("updateFirstName").value = tr.cells[0].textContent;
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
@@ -333,7 +333,7 @@ function updateContact(id)
     };
     let jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/UpdateContacts.' + extension;
+    let url = urlBase + '/UpdateContact.' + extension;
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
