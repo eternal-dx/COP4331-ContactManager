@@ -280,20 +280,20 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
-							<span class="button__text"></span>
-							<span class="button__icon">
-								<ion-icon name="trash-outline"></ion-icon>
-							</span>
-						</button>
-					</td>
-					<td>
-						<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
-							<span class="button__text"></span>
-							<span class="button__icon">
-								<ion-icon name="create-outline"></ion-icon>
-							</span>
-						</button>
+						<div>
+							<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
+								<span class="button__text"></span>
+								<span class="button__icon">
+									<ion-icon name="trash-outline"></ion-icon>
+								</span>
+							</button>
+							<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
+								<span class="button__text"></span>
+								<span class="button__icon">
+									<ion-icon name="create-outline"></ion-icon>
+								</span>
+							</button>
+						<div>
 					</td>
 					`
 
@@ -304,6 +304,7 @@ function searchContact()
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
+						document.getElementById("contactUpdateResult").innerHTML = "";
 					});
 
 					// Sets the modal's update button to update the selected contacts information
@@ -333,8 +334,6 @@ function updateContact(id)
 	let update_last = document.getElementById("updateLastName").value;
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
-
-	document.getElementById("contactUpdateResult").innerHTML = "";
 
     let tmp = {
 		firstName: update_first,
@@ -367,7 +366,6 @@ function updateContact(id)
 
 function deleteContact(id, contactFirst, contactLast)
 {
-	// TO CHANGE : find the first name and last name of the row of the deleted contact, rather than pulling the HTML from the first + last
     let check = confirm('Confirm deletion of contact: ' + contactFirst + ' ' + contactLast);
 
     if (check === true) {

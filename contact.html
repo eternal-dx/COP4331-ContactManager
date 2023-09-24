@@ -49,7 +49,7 @@
 				<button type="button" class="btn btn-primary" id="searchContactButton" onclick="searchContact();"></button>
 			</div>
 			<div id="add-contact-div">
-				<button type="button" class="form-control" id="addContactButton" data-bs-toggle="modal" data-bs-target=".add-contact-modal"></button>
+				<button type="button" class="form-control" id="addContactButton" data-bs-toggle="modal" data-bs-target=".add-contact-modal" onclick="(() => document.getElementById('contactAddResult').innerHTML = '')()"></button>
 			</div>
 		</div>
 		<span id="contactSearchResult"></span>
@@ -61,7 +61,6 @@
 						<th scope="col">Last Name</th>
 						<th scope="col">Email</th>
 						<th scope="col">Phone</th>
-						<th scope="col"></th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -94,7 +93,7 @@
 					</div>
 					<span id="contactAddResult"></span>
 					<div class="button-handler">
-						<button type="button" class="btn btn-primary" onclick="addContact();">Add</button>
+						<button type="button" class="btn btn-primary" id="confirmAddBtn" onclick="addContact();">Add</button>
 						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
 					</div>
 				</form>
