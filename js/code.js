@@ -223,7 +223,7 @@ function addContact()
 function searchContact()
 {
 	let srch = document.getElementById("searchText").value;
-	
+
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	let tmp = {
@@ -302,8 +302,10 @@ function searchContact()
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
-						document.getElementById("updateBtn").onclick = updateContact(contactID);
 					});
+
+					// Sets the modal's update button to update the selected contacts information
+					document.getElementById("updateBtn").addEventListener("click", () => updateContact(contactID));
 
 					tableBody.appendChild(tr);
 				}
@@ -327,8 +329,6 @@ function updateContact(id)
 
 	document.getElementById("contactUpdateResult").innerHTML = "";
 
-	console.log(id);
-
     let tmp = {
 		firstName: update_first,
 		lastName: update_last,
@@ -346,10 +346,6 @@ function updateContact(id)
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     try {
         xhr.onreadystatechange = function () {
-
-			console.log(jsonObject);
-			console.log(xhr.responseText);
-
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
 				document.getElementById("contactUpdateResult").innerHTML = "Contact has been updated";
