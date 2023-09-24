@@ -325,20 +325,20 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
-							<span class="button__text"></span>
-							<span class="button__icon">
-								<ion-icon name="create-outline"></ion-icon>
-							</span>
-						</button>
-					</td>
-					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
-							<span class="button__text"></span>
-							<span class="button__icon">
-								<ion-icon name="trash-outline"></ion-icon>
-							</span>
-						</button>
+						<div>
+							<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
+								<span class="button__text"></span>
+								<span class="button__icon">
+									<ion-icon name="create-outline"></ion-icon>
+								</span>
+							</button>
+							<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
+								<span class="button__text"></span>
+								<span class="button__icon">
+									<ion-icon name="trash-outline"></ion-icon>
+								</span>
+							</button>
+						</div>
 					</td>
 					`
 
