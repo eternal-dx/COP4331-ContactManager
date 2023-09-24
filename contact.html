@@ -91,10 +91,10 @@
 						<input type="text" class="form-control" id="contactEmail" placeholder="Email">
 						<label for="contactTextEmail">Email</label>
 					</div>
-					<span id="contactAddResult"></span>
+					<span id="contactAddResult" style="color:white"></span>
 					<div class="button-handler">
-						<button type="button" class="btn btn-primary" id="confirmAddBtn" onclick="addContact();">Add</button>
-						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+						<button type="button" class="btn btn-primary" onclick="addContact();">Add</button>
+						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" id="returnAdd">Return</button>
 					</div>
 				</form>
 			</div>
@@ -122,10 +122,10 @@
 						<input type="text" class="form-control" id="updateEmail" placeholder="Email">
 						<label for="updateEmail">Email</label>
 					</div>
-					<span id="contactUpdateResult"></span>
+					<span id="contactUpdateResult" style="color:white"></span>
 					<div class="button-handler">
 						<button type="button" class="btn btn-primary" id="updateBtn">Update</button>
-						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+						<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" id="returnUpdate">Return</button>
 					</div>
 				</form>
 			</div>
