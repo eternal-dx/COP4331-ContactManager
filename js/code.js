@@ -118,13 +118,13 @@ function doSignUp()
 	let username = document.getElementById("signupName").value;
 	let password = document.getElementById("signupPassword").value;
 
-	if (firstN == '' || lastN == '' || userN == '' || pass == '')
+	if (firstname == '' || lastname == '' || username == '' || password == '')
 	{
 		document.getElementById("signupResult").innerHTML = "All entries must be filled";
         return;
 	}
 
-	if (pass.length < 8)
+	if (password.length < 8)
 	{
 		document.getElementById("signupResult").innerHTML = "Password must be at least 8 characters long";
 		return;
@@ -225,8 +225,6 @@ function searchContact()
 	let srch = document.getElementById("searchText").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
-	let contactList = "";
-
 	let tmp = {
 		firstName: srch,
 		lastName: srch,
@@ -247,7 +245,8 @@ function searchContact()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 
-				if (jsonObject == null) {
+				// Check to determine if there were no records found from this search
+				if (jsonObject.error === "No Records Found") {
 					console.log("No contacts found!");
 					return;
 				}
@@ -261,20 +260,18 @@ function searchContact()
 				let resultNum = jsonObject.FirstName.length;
 				for( let i=0; i<resultNum; i++ )
 				{
+					// Contact Values
 					let contactFirst = jsonObject.FirstName[i];
 					let contactLast = jsonObject.lastName[i];
 					let contactPhone = jsonObject.phone[i];
 					let contactEmail = jsonObject.email[i];
 					let contactID = jsonObject.ID[i];
 
-					const firstNameForm = document.querySelector("updateFirstName");
-					const lastNameForm = document.querySelector("updateLastName");
-					const phoneForm = document.querySelector("updatePhone");
-					const emailForm = document.querySelector("updateEmail");
-
 					const tr = document.createElement("tr");
 					tr.setAttribute("id", "tr");
-					tr.innerHTML = `
+
+					tr.innerHTML =
+					`
 					<td id="tableFirstName">${contactFirst}</td>
 					<td id="tableLastName">${contactLast}</td>
 					<td id="tableEmail">${contactPhone}</td>
@@ -297,17 +294,17 @@ function searchContact()
 					</td>
 					`
 
-					contactList += tr;
+					// Loads all information into the modal on click
+					let button = tr.querySelector("#edit-btn");
+					button.addEventListener("click", function() {
+						document.getElementById("updateFirstName").placeholder = tr.cells[0].textContent;
+						document.getElementById("updateLastName").placeholder = tr.cells[1].textContent;
+						document.getElementById("updatePhone").placeholder = tr.cells[2].textContent;
+						document.getElementById("updateEmail").placeholder = tr.cells[3].textContent;
+					});
+
 					tableBody.appendChild(tr);
-					firstNameForm.setAttribute("value", contactFirst);
-					lastNameForm.setAttribute("value", contactLast);
-					phoneForm.setAttribute("value", contactPhone);
-					emailForm.setAttribute("value", contactEmail);
-					document.getElementById("updateBtn").onclick = updateContact(contactID);
-
-
 				}
-				
 			}
 		};
 		xhr.send(jsonPayload);
