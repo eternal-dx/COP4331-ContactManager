@@ -188,7 +188,51 @@ function addContact()
     let phonenumber = document.getElementById("contactPhone").value;
     let emailaddress = document.getElementById("contactEmail").value;
 
+	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+
 	document.getElementById("contactAddResult").innerHTML = "";
+	
+	//First Name filled
+	if (firstname == '')
+	{
+		document.getElementById("signupResult").innerHTML = "First Name Blank";
+        return;
+	}
+
+	//Last Named Filled
+	if (lastname == '')
+	{
+		document.getElementById("signupResult").innerHTML = "Last Name Blank";
+        return;
+	}
+
+	//Valid Phone
+	if (phonenumber == '')
+	{
+		document.getElementById("signupResult").innerHTML = "Phone Number Blank";
+        return;
+	}
+	else {
+		if (phoneRegex.test(phonenumber) == false){
+			document.getElementById("signupResult").innerHTML = "Invalid Phone Number";
+        	return;
+		}
+	}
+
+
+	if (emailaddress == '')
+	{
+		document.getElementById("signupResult").innerHTML = "Email Blank";
+        return;
+	}
+	else {
+		if(emailRegex.test(emailaddress) == false){
+			document.getElementById("signupResult").innerHTML = "Invalid Email";
+			return;
+		}
+	}
+
 
 	let tmp = { 
 			firstName: firstname,
@@ -211,6 +255,7 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -280,18 +325,18 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
-							<span class="button__text"></span>
-							<span class="button__icon">
-								<ion-icon name="trash-outline"></ion-icon>
-							</span>
-						</button>
-					</td>
-					<td>
 						<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="create-outline"></ion-icon>
+							</span>
+						</button>
+					</td>
+					<td>
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
+							<span class="button__text"></span>
+							<span class="button__icon">
+								<ion-icon name="trash-outline"></ion-icon>
 							</span>
 						</button>
 					</td>
@@ -314,6 +359,16 @@ function searchContact()
 					curUpdateFunction = () => updateContact(contactID);
 					document.getElementById("updateBtn").addEventListener("click", curUpdateFunction);
 
+					//Clear spans upon return click
+					let updateReturnBtn = document.getElementById("returnUpdate");
+					updateReturnBtn.addEventListener("click",  function() {
+						document.getElementById("contactUpdateResult").innerHTML = "";
+					});
+					let addReturnBtn = document.getElementById("returnAdd");
+					addReturnBtn.addEventListener("click",  function() {
+						document.getElementById("contactAddResult").innerHTML = "";
+					});
+
 					tableBody.appendChild(tr);
 				}
 			}
@@ -335,6 +390,48 @@ function updateContact(id)
     let update_emailaddress = document.getElementById("updateEmail").value;
 
 	document.getElementById("contactUpdateResult").innerHTML = "";
+
+	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+	
+	//First Name filled
+	if (update_first == '')
+	{
+		document.getElementById("contactUpdateResult").innerHTML = "First Name can't be blank";
+        return;
+	}
+
+	//Last Named Filled
+	if (update_last == '')
+	{
+		document.getElementById("contactUpdateResult").innerHTML = "Last Name can't be blank";
+        return;
+	}
+
+	//Valid Phone
+	if (update_phonenumber == '')
+	{
+		document.getElementById("contactUpdateResult").innerHTML = "Phone Number can't be blank";
+        return;
+	}
+	else {
+		if (phoneRegex.test(update_phonenumber) == false){
+			document.getElementById("contactUpdateResult").innerHTML = "Invalid Phone Number";
+        	return;
+		}
+	}
+
+	if (update_emailaddress == '')
+	{
+		document.getElementById("signupResult").innerHTML = "Email can't be blank";
+        return;
+	}
+	else {
+		if(emailRegex.test(update_emailaddress) == false){
+			document.getElementById("signupResult").innerHTML = "Invalid Email";
+			return;
+		}
+	}
 
     let tmp = {
 		firstName: update_first,

@@ -180,7 +180,7 @@ header {
     border: none;
     background-image: url(images/delete_icon.png);
     background-position: center;
-    background-size: 100%;
+    background-size: 80%;
     background-repeat: no-repeat;
     display: flex;
     width: 40px;
