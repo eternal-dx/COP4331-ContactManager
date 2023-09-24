@@ -245,6 +245,9 @@ function searchContact()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 
+				const tableBody = document.getElementById("tableBody");
+				tableBody.innerHTML = "";
+
 				// Check to determine if there were no records found from this search
 				if (jsonObject.error === "No Records Found") {
 					console.log("No contacts found!");
@@ -253,9 +256,6 @@ function searchContact()
 
 				console.log(jsonObject);
 				console.log(xhr.responseText);
-
-				const tableBody = document.getElementById("tableBody");
-				tableBody.innerHTML = "";
 
 				let resultNum = jsonObject.FirstName.length;
 				for( let i=0; i<resultNum; i++ )
@@ -353,6 +353,7 @@ function updateContact(id)
 
 function deleteContact(id)
 {
+	// TO CHANGE : find the first name and last name of the row of the deleted contact, rather than pulling the HTML from the first + last
 	let firstName = document.getElementById("tableFirstName").innerHTML;
 	let lastName = document.getElementById("tableLastName").innerHTML;
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
