@@ -357,8 +357,8 @@ function searchContact()
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
-						document.getElementById(resultIDFail).style = "display: none";
-						document.getElementById(resultIDSuccess).style = "display: none";
+						document.getElementById("contactUpdateFail").style = "display: none";
+						document.getElementById("contactUpdateSuccess").style = "display: none";
 					});
 
 					// Sets the modal's update button to update the selected contacts information
