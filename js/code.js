@@ -325,7 +325,7 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<div>
+						<div id="contactButtons">
 							<button id="edit-btn" type="button" class="btn" data-bs-toggle="modal" data-bs-target=".edit-contact-modal">
 								<span class="button__text"></span>
 								<span class="button__icon">
