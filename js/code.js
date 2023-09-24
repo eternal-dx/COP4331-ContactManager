@@ -7,6 +7,8 @@ let lastName = "";
 
 let tablearr = [];
 
+let curUpdateFunction = null;
+
 function doLogin()
 {
 	userId = 0;
@@ -305,7 +307,12 @@ function searchContact()
 					});
 
 					// Sets the modal's update button to update the selected contacts information
-					document.getElementById("updateBtn").addEventListener("click", () => updateContact(contactID));
+					let updateBtn = document.getElementById("updateBtn");
+					if (curUpdateFunction != null) {
+						updateBtn.removeEventListener("click", curUpdateFunction);
+					}
+					curUpdateFunction = () => updateContact(contactID);
+					document.getElementById("updateBtn").addEventListener("click", curUpdateFunction);
 
 					tableBody.appendChild(tr);
 				}
