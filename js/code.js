@@ -181,6 +181,14 @@ function doSignUp()
 
 }
 
+function clearAdd() {
+	document.getElementById("contactFirst").value = "";
+	document.getElementById("contactLast").value = "";
+	document.getElementById("contactPhone").value = "";
+	document.getElementById("contactEmail").value = "";
+	document.getElementById("contactAddResult").innerHTML = "";
+}
+
 function addContact()
 {
 	let firstname = document.getElementById("contactFirst").value;
@@ -190,8 +198,6 @@ function addContact()
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
-
-	document.getElementById("contactAddResult").innerHTML = "";
 	
 	//First Name filled
 	if (firstname == '')
@@ -360,16 +366,6 @@ function searchContact()
 					curUpdateFunction = () => updateContact(contactID);
 					document.getElementById("updateBtn").addEventListener("click", curUpdateFunction);
 
-					//Clear spans upon return click
-					let updateReturnBtn = document.getElementById("returnUpdate");
-					updateReturnBtn.addEventListener("click",  function() {
-						document.getElementById("contactUpdateResult").innerHTML = "";
-					});
-					let addReturnBtn = document.getElementById("returnAdd");
-					addReturnBtn.addEventListener("click",  function() {
-						document.getElementById("contactAddResult").innerHTML = "";
-					});
-
 					tableBody.appendChild(tr);
 				}
 			}
@@ -389,8 +385,6 @@ function updateContact(id)
 	let update_last = document.getElementById("updateLastName").value;
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
-
-	document.getElementById("contactUpdateResult").innerHTML = "";
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
