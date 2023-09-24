@@ -277,7 +277,7 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${tr}');">
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact('${contactID}', '${contactFirst}', '${contactLast}');">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="trash-outline"></ion-icon>
@@ -329,7 +329,8 @@ function updateContact(id)
 		lastName: update_last,
         newPhone: update_phonenumber,
         newEmail: update_emailaddress,
-        userID: id
+        userId: userId,
+		ID: id
     };
     let jsonPayload = JSON.stringify(tmp);
 
@@ -342,7 +343,7 @@ function updateContact(id)
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
-				document.getElementById("contactUpdateResult").innerHTML = "Contact has been added";
+				document.getElementById("contactUpdateResult").innerHTML = "Contact has been updated";
                 searchContact();
             }
         };
@@ -352,12 +353,10 @@ function updateContact(id)
     }
 }
 
-function deleteContact(id, tr)
+function deleteContact(id, contactFirst, contactLast)
 {
 	// TO CHANGE : find the first name and last name of the row of the deleted contact, rather than pulling the HTML from the first + last
-	let firstName = tr.cells[0].textContent;
-	let lastName = tr.cells[1].textContent;
-    let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
+    let check = confirm('Confirm deletion of contact: ' + contactFirst + ' ' + contactLast);
 
     if (check === true) {
         let tmp = {
