@@ -196,26 +196,26 @@ function addContact()
 	//First Name filled
 	if (firstname == '')
 	{
-		document.getElementById("signupResult").innerHTML = "First Name Blank";
+		document.getElementById("contactAddResult").innerHTML = "First Name Blank";
         return;
 	}
 
 	//Last Named Filled
 	if (lastname == '')
 	{
-		document.getElementById("signupResult").innerHTML = "Last Name Blank";
+		document.getElementById("contactAddResult").innerHTML = "Last Name Blank";
         return;
 	}
 
 	//Valid Phone
 	if (phonenumber == '')
 	{
-		document.getElementById("signupResult").innerHTML = "Phone Number Blank";
+		document.getElementById("contactAddResult").innerHTML = "Phone Number Blank";
         return;
 	}
 	else {
 		if (phoneRegex.test(phonenumber) == false){
-			document.getElementById("signupResult").innerHTML = "Invalid Phone Number";
+			document.getElementById("contactAddResult").innerHTML = "Invalid Phone Number";
         	return;
 		}
 	}
@@ -223,12 +223,12 @@ function addContact()
 
 	if (emailaddress == '')
 	{
-		document.getElementById("signupResult").innerHTML = "Email Blank";
+		document.getElementById("contactAddResult").innerHTML = "Email Blank";
         return;
 	}
 	else {
 		if(emailRegex.test(emailaddress) == false){
-			document.getElementById("signupResult").innerHTML = "Invalid Email";
+			document.getElementById("contactAddResult").innerHTML = "Invalid Email";
 			return;
 		}
 	}
@@ -424,12 +424,12 @@ function updateContact(id)
 
 	if (update_emailaddress == '')
 	{
-		document.getElementById("signupResult").innerHTML = "Email can't be blank";
+		document.getElementById("contactUpdateResult").innerHTML = "Email can't be blank";
         return;
 	}
 	else {
 		if(emailRegex.test(update_emailaddress) == false){
-			document.getElementById("signupResult").innerHTML = "Invalid Email";
+			document.getElementById("contactUpdateResult").innerHTML = "Invalid Email";
 			return;
 		}
 	}
