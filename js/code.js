@@ -45,7 +45,7 @@ function doLogin()
 		
 				if( userId < 1 )
 				{		
-					sendAlert(resultID, "User/Password incorrect");
+					sendAlert(resultID, "User/Password Incorrect!");
 					return;
 				}
 		
@@ -127,13 +127,13 @@ function doSignUp()
 
 	if (firstname == '' || lastname == '' || username == '' || password == '')
 	{
-		sendAlert(resultID, "All entries must be filled");
+		sendAlert(resultID, "All Entries must be Filled!");
         return;
 	}
 
 	if (password.length < 8)
 	{
-		sendAlert(resultID, "Password must be at least 8 characters long");
+		sendAlert(resultID, "Password must be at Least 8 Characters Long!");
 		return;
 	}
 
@@ -189,7 +189,8 @@ function clearAdd() {
 	document.getElementById("contactLast").value = "";
 	document.getElementById("contactPhone").value = "";
 	document.getElementById("contactEmail").value = "";
-	document.getElementById("contactAddResult").innerHTML = "";
+	document.getElementById("contactAddFail").style = "display: none";
+	document.getElementById("contactAddSuccess").style = "display: none";
 }
 
 function addContact()
@@ -198,7 +199,8 @@ function addContact()
     let lastname = document.getElementById("contactLast").value;
     let phonenumber = document.getElementById("contactPhone").value;
     let emailaddress = document.getElementById("contactEmail").value;
-	let resultID = "contactAddResult";
+	let resultIDFail = "contactAddFail";
+	let resultIDSuccess = "contactAddSuccess";
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
@@ -206,38 +208,38 @@ function addContact()
 	//First Name filled
 	if (firstname == '')
 	{
-		sendAlert(resultID, "First Name Blank");
+		sendAlert(resultIDFail, "First Name Blank!");
         return;
 	}
 
 	//Last Named Filled
 	if (lastname == '')
 	{
-		sendAlert(resultID, "Last Name Blank");
+		sendAlert(resultIDFail, "Last Name Blank!");
         return;
 	}
 
 	//Valid Phone
 	if (phonenumber == '')
 	{
-		sendAlert(resultID, "Phone Number Blank");
+		sendAlert(resultIDFail, "Phone Number Blank!");
         return;
 	}
 	else {
 		if (phoneRegex.test(phonenumber) == false) {
-			sendAlert(resultID, "Invalid Phone Number");
+			sendAlert(resultIDFail, "Invalid Phone Number!");
         	return;
 		}
 	}
 
 	if (emailaddress == '')
 	{
-		sendAlert(resultID, "Email Blank");
+		sendAlert(resultIDFail, "Email Blank!");
         return;
 	}
 	else {
 		if (emailRegex.test(emailaddress) == false) {
-			sendAlert(resultID, "Invalid Email");
+			sendAlert(resultIDFail, "Invalid Email!");
 			return;
 		}
 	}
@@ -262,7 +264,8 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				sendAlert(resultID, "Contact has been added");
+				document.getElementById(resultIDFail).style = "display: none";
+				sendAlert(resultIDSuccess, "Contact has been added");
 				searchContact();
 			}
 		};
@@ -270,7 +273,7 @@ function addContact()
 	}
 	catch(err)
 	{
-		sendAlert(resultID, err.message);
+		sendAlert(resultIDFail, err.message);
 	}
 	
 }
@@ -305,10 +308,7 @@ function searchContact()
 				tableBody.innerHTML = "";
 
 				// Check to determine if there were no records found from this search
-				if (jsonObject.error === "No Records Found") {
-					console.log("No contacts found!");
-					return;
-				}
+				if (jsonObject.error === "No Records Found") return;
 
 				console.log(jsonObject);
 				console.log(xhr.responseText);
@@ -357,7 +357,8 @@ function searchContact()
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
-						document.getElementById("contactUpdateResult").innerHTML = "";
+						// document.getElementById(resultIDFail).style = "display: none";
+						// document.getElementById(resultIDSuccess).style = "display: none";
 					});
 
 					// Sets the modal's update button to update the selected contacts information
@@ -387,7 +388,8 @@ function updateContact(id)
 	let update_last = document.getElementById("updateLastName").value;
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
-	let resultID = "contactUpdateResult";
+	let resultIDFail = "contactUpdateFail";
+	let resultIDSuccess = "contactUpdateSuccess";
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
@@ -395,38 +397,38 @@ function updateContact(id)
 	//First Name filled
 	if (update_first == '')
 	{
-		sendAlert(resultID, "First Name can't be blank");
+		sendAlert(resultIDFail, "First Name Can't be Blank!");
         return;
 	}
 
 	//Last Named Filled
 	if (update_last == '')
 	{
-		sendAlert(resultID, "Last Name can't be blank");
+		sendAlert(resultIDFail, "Last Name Can't be Blank!");
         return;
 	}
 
 	//Valid Phone
 	if (update_phonenumber == '')
 	{
-		sendAlert(resultID, "Phone Number can't be blank");
+		sendAlert(resultIDFail, "Phone Number Can't be Blank!");
         return;
 	}
 	else {
 		if (phoneRegex.test(update_phonenumber) == false) {
-			sendAlert(resultID, "Invalid Phone Number");
+			sendAlert(resultIDFail, "Invalid Phone Number!");
         	return;
 		}
 	}
 
 	if (update_emailaddress == '')
 	{
-		sendAlert(resultID, "Email can't be blank");
+		sendAlert(resultIDFail, "Email Can't be Blank!");
         return;
 	}
 	else {
 		if (emailRegex.test(update_emailaddress) == false) {
-			sendAlert(resultID, "Invalid Email");
+			sendAlert(resultIDFail, "Invalid Email!");
 			return;
 		}
 	}
@@ -449,8 +451,8 @@ function updateContact(id)
     try {
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log("Contact has been updated");
-				sendAlert(resultID, "Contact has been updated");
+				document.getElementById(resultIDFail).style = "display: none";
+				sendAlert(resultIDSuccess, "Contact has been Updated!");
                 searchContact();
             }
         };
@@ -462,7 +464,7 @@ function updateContact(id)
 
 function deleteContact(id, contactFirst, contactLast)
 {
-    let check = confirm('Confirm deletion of contact: ' + contactFirst + ' ' + contactLast);
+    let check = confirm('Confirm Deletion of Contact: ' + contactFirst + ' ' + contactLast);
 
     if (check === true) {
         let tmp = {
@@ -479,7 +481,6 @@ function deleteContact(id, contactFirst, contactLast)
         try {
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log("Contact has been deleted");
 					// document.getElementById("searchText").innerHTML = ""; //refresh the search? or table.
 					searchContact();
                 }

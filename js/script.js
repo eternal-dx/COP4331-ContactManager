@@ -9,6 +9,7 @@ function logIn() {
     if (!enterScreen()) return;
     let content = $(".container");
     content.find("#main").fadeOut(400);
+    content.find("#loginResult").css("display", "none");
     content.find("#login").delay(500).fadeIn(200, function() {
         screenActive = false;
     });
@@ -19,6 +20,7 @@ function signUp() {
     if (!enterScreen()) return;
     let content = $(".container");
     content.find("#main").fadeOut(400);
+    content.find("#signupResult").css("display", "none");
     content.find("#signup").delay(500).fadeIn(200, function() {
         screenActive = false;
     });
