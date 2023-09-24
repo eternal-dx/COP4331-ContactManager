@@ -277,7 +277,7 @@ function searchContact()
 					<td id="tableEmail">${contactPhone}</td>
 					<td id="tablePhoneNumber">${contactEmail}</td>
 					<td>
-						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${contactID})">
+						<button id="deleteButton" type="button" class="btn" onclick="deleteContact(${contactID}, ${tr}});">
 							<span class="button__text"></span>
 							<span class="button__icon">
 								<ion-icon name="trash-outline"></ion-icon>
@@ -296,13 +296,12 @@ function searchContact()
 
 					// Loads all information into the modal on click
 					let button = tr.querySelector("#edit-btn");
-					console.log(button);
 					button.addEventListener("click", function() {
 						document.getElementById("updateFirstName").value = tr.cells[0].textContent;
 						document.getElementById("updateLastName").value = tr.cells[1].textContent;
 						document.getElementById("updatePhone").value = tr.cells[2].textContent;
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
-						console.log(tr.cells[0].textContent + " " + tr.cells[1].textContent + " " + tr.cells[2].textContent + " " + tr.cells[3].textContent);
+						document.getElementById("updateBtn").onclick = updateContact(contactID);
 					});
 
 					tableBody.appendChild(tr);
@@ -353,11 +352,11 @@ function updateContact(id)
     }
 }
 
-function deleteContact(id)
+function deleteContact(id, tr)
 {
 	// TO CHANGE : find the first name and last name of the row of the deleted contact, rather than pulling the HTML from the first + last
-	let firstName = document.getElementById("tableFirstName").innerHTML;
-	let lastName = document.getElementById("tableLastName").innerHTML;
+	let firstName = tr.cells[0].textContent;
+	let lastName = tr.cells[1].textContent;
     let check = confirm('Confirm deletion of contact: ' + firstName + ' ' + lastName);
 
     if (check === true) {
@@ -376,7 +375,7 @@ function deleteContact(id)
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log("Contact has been deleted");
-					document.getElementById("searchText").innerHTML = ""; //refresh the search? or table.
+					// document.getElementById("searchText").innerHTML = ""; //refresh the search? or table.
 					searchContact();
                 }
             };
