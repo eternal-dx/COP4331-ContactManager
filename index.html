@@ -44,7 +44,7 @@
         <div class="center" id="login" style="display: none">
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
-                <h1 class="main-text">Contact Captain</h1>
+                <h1 class="main-text mb-0">Contact Captain</h1>
                 <h3 class="sub-header-text">~ Log In ~</h3>
             </div>
             <form>
@@ -60,9 +60,7 @@
                     <input type="checkbox" class="form-check-input me-2" id="rememberMe" value="">
                     <label class="form-check-label" for="rememberMe" id="rememberMeLabel">Remember Me</label>
                 </div>
-                <div class="mb-4">
-                    <span id="loginResult"></span>
-                </div>
+                <div class="alert alert-danger mb-4" id="loginResult" role="alert" style="display: none"></div>
                 <div class="button-handler">
                     <button type="button" class="btn btn-primary" id="loginSubmitButton" onclick="doLogin();">Log In</button>
                     <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>
@@ -73,7 +71,7 @@
         <div class="center" id="signup" style="display: none">
             <img id="hat" src="images/captain_hat.png" alt="Captain's Hat">
             <div>
-                <h1 class="main-text">Contact Captain</h1>
+                <h1 class="main-text mb-0">Contact Captain</h1>
                 <h3 class="sub-header-text">~ Sign Up ~</h3>
             </div>
             <form>
@@ -99,9 +97,7 @@
                     <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
                     <label for="signupPassword">Password</label>
                 </div>
-                <div class="mb-4">
-                    <span id="signupResult"></span>
-                </div>
+                <div class="alert alert-danger mb-4" id="signupResult" role="alert" style="display: none"></div>
                 <div class="button-handler">
                     <button type="button" class="btn btn-primary" id="signupSubmitButton" onclick="doSignUp();">Sign Up</button>
                     <button type="reset" class="btn btn-secondary" onclick="returnHome();">Return</button>

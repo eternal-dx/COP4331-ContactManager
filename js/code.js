@@ -9,6 +9,12 @@ let tablearr = [];
 
 let curUpdateFunction = null;
 
+function sendAlert(elementID, alert) {
+	let element = document.getElementById(elementID);
+	element.style = "display: block";
+	element.innerHTML = alert;
+}
+
 function doLogin()
 {
 	userId = 0;
@@ -18,8 +24,7 @@ function doLogin()
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
 	var hash = md5( password );
-	
-	document.getElementById("loginResult").innerHTML = "";
+	let resultID = "loginResult";
 
 	let tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
@@ -40,7 +45,7 @@ function doLogin()
 		
 				if( userId < 1 )
 				{		
-					document.getElementById("loginResult").innerHTML = "User/Password incorrect";
+					sendAlert(resultID, "User/Password incorrect");
 					return;
 				}
 		
@@ -56,9 +61,8 @@ function doLogin()
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		sendAlert(resultID, err.message);
 	}
-
 }
 
 function saveCookie()
@@ -119,16 +123,17 @@ function doSignUp()
     let lastname = document.getElementById("lastName").value;
 	let username = document.getElementById("signupName").value;
 	let password = document.getElementById("signupPassword").value;
+	let resultID = "signupResult";
 
 	if (firstname == '' || lastname == '' || username == '' || password == '')
 	{
-		document.getElementById("signupResult").innerHTML = "All entries must be filled";
+		sendAlert(resultID, "All entries must be filled");
         return;
 	}
 
 	if (password.length < 8)
 	{
-		document.getElementById("signupResult").innerHTML = "Password must be at least 8 characters long";
+		sendAlert(resultID, "Password must be at least 8 characters long");
 		return;
 	}
 
@@ -154,7 +159,7 @@ function doSignUp()
 		xhr.onreadystatechange = function() 
 		{
             if (this.status == 409) {
-                document.getElementById("signupResult").innerHTML = "User already exists";
+				sendAlert(resultID, "User already exists");
                 return;
             }
 
@@ -165,8 +170,6 @@ function doSignUp()
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
 
-				document.getElementById("signupResult").innerHTML = "User created";
-
 				saveCookie();
 	
 				window.location.href = "contact.html";
@@ -176,7 +179,7 @@ function doSignUp()
 	}
 	catch(err)
 	{
-		document.getElementById("loginResult").innerHTML = err.message;
+		sendAlert(resultID, err.message);
 	}
 
 }
@@ -195,6 +198,7 @@ function addContact()
     let lastname = document.getElementById("contactLast").value;
     let phonenumber = document.getElementById("contactPhone").value;
     let emailaddress = document.getElementById("contactEmail").value;
+	let resultID = "contactAddResult";
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
@@ -202,43 +206,41 @@ function addContact()
 	//First Name filled
 	if (firstname == '')
 	{
-		document.getElementById("contactAddResult").innerHTML = "First Name Blank";
+		sendAlert(resultID, "First Name Blank");
         return;
 	}
 
 	//Last Named Filled
 	if (lastname == '')
 	{
-		document.getElementById("contactAddResult").innerHTML = "Last Name Blank";
+		sendAlert(resultID, "Last Name Blank");
         return;
 	}
 
 	//Valid Phone
 	if (phonenumber == '')
 	{
-		document.getElementById("contactAddResult").innerHTML = "Phone Number Blank";
+		sendAlert(resultID, "Phone Number Blank");
         return;
 	}
 	else {
-		if (phoneRegex.test(phonenumber) == false){
-			document.getElementById("contactAddResult").innerHTML = "Invalid Phone Number";
+		if (phoneRegex.test(phonenumber) == false) {
+			sendAlert(resultID, "Invalid Phone Number");
         	return;
 		}
 	}
 
-
 	if (emailaddress == '')
 	{
-		document.getElementById("contactAddResult").innerHTML = "Email Blank";
+		sendAlert(resultID, "Email Blank");
         return;
 	}
 	else {
-		if(emailRegex.test(emailaddress) == false){
-			document.getElementById("contactAddResult").innerHTML = "Invalid Email";
+		if (emailRegex.test(emailaddress) == false) {
+			sendAlert(resultID, "Invalid Email");
 			return;
 		}
 	}
-
 
 	let tmp = { 
 			firstName: firstname,
@@ -260,7 +262,7 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				sendAlert(resultID, "Contact has been added");
 				searchContact();
 			}
 		};
@@ -268,7 +270,7 @@ function addContact()
 	}
 	catch(err)
 	{
-		document.getElementById("contactAddResult").innerHTML = err.message;
+		sendAlert(resultID, err.message);
 	}
 	
 }
@@ -385,6 +387,7 @@ function updateContact(id)
 	let update_last = document.getElementById("updateLastName").value;
     let update_phonenumber = document.getElementById("updatePhone").value;
     let update_emailaddress = document.getElementById("updateEmail").value;
+	let resultID = "contactUpdateResult";
 
 	var emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 	var phoneRegex = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
@@ -392,38 +395,38 @@ function updateContact(id)
 	//First Name filled
 	if (update_first == '')
 	{
-		document.getElementById("contactUpdateResult").innerHTML = "First Name can't be blank";
+		sendAlert(resultID, "First Name can't be blank");
         return;
 	}
 
 	//Last Named Filled
 	if (update_last == '')
 	{
-		document.getElementById("contactUpdateResult").innerHTML = "Last Name can't be blank";
+		sendAlert(resultID, "Last Name can't be blank");
         return;
 	}
 
 	//Valid Phone
 	if (update_phonenumber == '')
 	{
-		document.getElementById("contactUpdateResult").innerHTML = "Phone Number can't be blank";
+		sendAlert(resultID, "Phone Number can't be blank");
         return;
 	}
 	else {
-		if (phoneRegex.test(update_phonenumber) == false){
-			document.getElementById("contactUpdateResult").innerHTML = "Invalid Phone Number";
+		if (phoneRegex.test(update_phonenumber) == false) {
+			sendAlert(resultID, "Invalid Phone Number");
         	return;
 		}
 	}
 
 	if (update_emailaddress == '')
 	{
-		document.getElementById("contactUpdateResult").innerHTML = "Email can't be blank";
+		sendAlert(resultID, "Email can't be blank");
         return;
 	}
 	else {
-		if(emailRegex.test(update_emailaddress) == false){
-			document.getElementById("contactUpdateResult").innerHTML = "Invalid Email";
+		if (emailRegex.test(update_emailaddress) == false) {
+			sendAlert(resultID, "Invalid Email");
 			return;
 		}
 	}
@@ -447,7 +450,7 @@ function updateContact(id)
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log("Contact has been updated");
-				document.getElementById("contactUpdateResult").innerHTML = "Contact has been updated";
+				sendAlert(resultID, "Contact has been updated");
                 searchContact();
             }
         };
