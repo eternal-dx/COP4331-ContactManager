@@ -183,7 +183,7 @@ header {
 #contactButtons {
     display: flex;
     align-items: end;
-    justify-content: right;
+    justify-content: space-around;
 }
 
 #deleteButton {
@@ -245,7 +245,15 @@ header {
 #logoutButton {
     width: 20%;
     border: var(--light-button-outline);
-} 
+}
+
+#table {
+    margin-top: 15px;
+}
+
+#table th, td:last-child {
+    max-width: 70px;
+}
 
 .table-wrapper {
     background-color: var(--darker-shadow);
@@ -256,10 +264,6 @@ header {
     padding: 20px;
     margin-top: 30px;
     border-radius: 20px;
-}
-
-#table {
-    margin-top: 15px;
 }
 
 .table-wrapper tbody tr:hover {
