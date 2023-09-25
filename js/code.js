@@ -45,7 +45,7 @@ function doLogin()
 		
 				if( userId < 1 )
 				{		
-					sendAlert(resultID, "User/Password Incorrect!");
+					sendAlert(resultID, "Username/Password is Incorrect!");
 					return;
 				}
 		
@@ -265,7 +265,7 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById(resultIDFail).style = "display: none";
-				sendAlert(resultIDSuccess, "Contact has been added");
+				sendAlert(resultIDSuccess, "Contact has been Added!");
 				searchContact();
 			}
 		};
