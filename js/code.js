@@ -356,15 +356,12 @@ function searchContact()
 						document.getElementById("updateEmail").value = tr.cells[3].textContent;
 						document.getElementById("contactUpdateFail").style = "display: none";
 						document.getElementById("contactUpdateSuccess").style = "display: none";
-					});
 
-					// Sets the modal's update button to update the selected contacts information
-					// let updateBtn = document.getElementById("updateBtn");
-					// if (curUpdateFunction != null) {
-					// 	updateBtn.removeEventListener("click", curUpdateFunction);
-					// }
-					// curUpdateFunction = () => updateContact(contactID);
-					document.getElementById("updateBtn").addEventListener("click", updateContact(contactID));
+						// Sets the modal's update button to update the selected contacts information
+						if (curUpdateFunction != null) updateBtn.removeEventListener("click", curUpdateFunction);
+						curUpdateFunction = () => updateContact(contactID);
+						document.getElementById("updateBtn").addEventListener("click", curUpdateFunction);
+					});
 
 					tableBody.appendChild(tr);
 				}
