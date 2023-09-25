@@ -310,9 +310,6 @@ function searchContact()
 				// Check to determine if there were no records found from this search
 				if (jsonObject.error === "No Records Found") return;
 
-				console.log(jsonObject);
-				console.log(xhr.responseText);
-
 				let resultNum = jsonObject.FirstName.length;
 				for( let i=0; i<resultNum; i++ )
 				{
@@ -362,12 +359,12 @@ function searchContact()
 					});
 
 					// Sets the modal's update button to update the selected contacts information
-					let updateBtn = document.getElementById("updateBtn");
-					if (curUpdateFunction != null) {
-						updateBtn.removeEventListener("click", curUpdateFunction);
-					}
-					curUpdateFunction = () => updateContact(contactID);
-					document.getElementById("updateBtn").addEventListener("click", curUpdateFunction);
+					// let updateBtn = document.getElementById("updateBtn");
+					// if (curUpdateFunction != null) {
+					// 	updateBtn.removeEventListener("click", curUpdateFunction);
+					// }
+					// curUpdateFunction = () => updateContact(contactID);
+					document.getElementById("updateBtn").addEventListener("click", updateContact(contactID));
 
 					tableBody.appendChild(tr);
 				}
@@ -481,7 +478,6 @@ function deleteContact(id, contactFirst, contactLast)
         try {
             xhr.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-					// document.getElementById("searchText").innerHTML = ""; //refresh the search? or table.
 					searchContact();
                 }
             };
